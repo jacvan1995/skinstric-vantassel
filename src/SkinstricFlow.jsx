@@ -1,14 +1,14 @@
-import React, { useState } from "react";
-import CodeEntry from "./Intro/CodeEntry";
-import CameraPermission from "./Scan/CameraPermission";
-import FaceScanInstructions from "./Scan/FaceScanInstructions";
-import FaceScan from "./Scan/FaceScan";
-import ScanProgress from "./Scan/ScanProgress";
-import DemographicSummary from "./Analysis/DemographicSummary";
-import RoutineSummary from "./Routine/RoutineSummary";
-import ConfirmationPanel from "./Routine/ConfirmationPanel";
-import CustomerForm from "./Intro/CustomerForm";
-import { CSSTransition, TransitionGroup } from "react-transition-group";
+import React, { useState, useEffect, TransitionGroup, CSSTransition } from "react";
+import CodeEntry from "./components/skinstric/Intro/CodeEntry";
+import CameraPermission from "./components/skinstric/Scan/CameraPermission";
+import FaceScanInstructions from "./components/skinstric/Scan/FaceScanInstructions";
+import FaceScan from "./components/skinstric/Scan/FaceScan";
+import ScanProgress from "./components/skinstric/Scan/ScanProgress";
+import DemographicSummary from "./components/skinstric/Analysis/DemographicSummary";
+import RoutineSummary from "./components/skinstric/Routine/RoutineSummary";
+import ConfirmationPanel from "./components/skinstric/Routine/ConfirmationPanel";
+import CustomerForm from "./components/skinstric/Intro/CustomerForm";
+import ConcernSelector from "./components/skinstric/Analysis/ConcernSelector";
 
 const SkinstricFlow = () => {
   const [step, setStep] = useState(0);
