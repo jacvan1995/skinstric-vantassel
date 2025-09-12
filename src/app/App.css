@@ -79,6 +79,61 @@ video {
   cursor: pointer;
 }
 
+.dual-input-page {
+  position: relative;
+  padding: 2rem;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.input-block {
+  margin-bottom: 2rem;
+  transition: opacity 0.5s ease;
+}
+
+.fade-in {
+  opacity: 1;
+  animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.proceed-btn {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  padding: 0.75rem 1.5rem;
+  background-color: #222;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.page-slide-enter {
+  transform: translateX(100%);
+  opacity: 0;
+}
+.page-slide-enter-active {
+  transform: translateX(0%);
+  opacity: 1;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+.page-slide-exit {
+  transform: translateX(0%);
+  opacity: 1;
+}
+.page-slide-exit-active {
+  transform: translateX(-100%);
+  opacity: 0;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
 @media (max-width: 768px) {
   section {
     padding: 1.5rem;

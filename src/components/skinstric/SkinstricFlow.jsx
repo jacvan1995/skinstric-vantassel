@@ -8,6 +8,7 @@ import DemographicSummary from "./Analysis/DemographicSummary";
 import RoutineSummary from "./Routine/RoutineSummary";
 import ConfirmationPanel from "./Routine/ConfirmationPanel";
 import CustomerForm from "./Intro/CustomerForm";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 const SkinstricFlow = () => {
   const [step, setStep] = useState(0);
@@ -50,18 +51,17 @@ const SkinstricFlow = () => {
   }, [scanComplete, base64Image]);
 
   return (
+    <TransitionGroup component={null}>
+  <CSSTransition key={step} classNames="page-slide" timeout={400}>
     <main className="skinstric-flow">
       {step === 0 && (
         <CustomerForm
           onSubmit={(formData) => {
-            fetch(
-              "https://us-central1-api-skinstric-ai.cloudfunctions.net/skinstricPhaseOne",
-              {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(formData),
-              }
-            )
+            fetch("https://us-central1-api-skinstric-ai.cloudfunctions.net/skinstricPhaseOne", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(formData),
+            })
               .then((res) => res.json())
               .then((data) => {
                 setCustomer(data);
@@ -80,6 +80,7 @@ const SkinstricFlow = () => {
           }}
         />
       )}
+
       {step === 2 && (
         <CameraPermission
           onAllow={() => {
@@ -88,6 +89,7 @@ const SkinstricFlow = () => {
           }}
         />
       )}
+
       {step === 3 && (
         <FaceScanInstructions
           onStart={() => {
@@ -96,6 +98,7 @@ const SkinstricFlow = () => {
           }}
         />
       )}
+
       {step === 4 && (
         <FaceScan
           onComplete={(imageData) => {
@@ -104,7 +107,9 @@ const SkinstricFlow = () => {
           }}
         />
       )}
+
       {step === 5 && <ScanProgress />}
+
       {step === 6 && (
         <DemographicSummary
           age={demographics.age}
@@ -113,6 +118,7 @@ const SkinstricFlow = () => {
           onContinue={next}
         />
       )}
+
       {step === 7 && (
         <ConcernSelector
           onSelect={(selectedConcerns) => {
@@ -121,6 +127,7 @@ const SkinstricFlow = () => {
           }}
         />
       )}
+
       {step === 8 && (
         <RoutineSummary
           concerns={concerns}
@@ -137,6 +144,8 @@ const SkinstricFlow = () => {
         />
       )}
     </main>
+  </CSSTransition>
+</TransitionGroup>
   );
 };
 
