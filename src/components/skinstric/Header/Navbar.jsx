@@ -8,7 +8,7 @@ const Navbar = () => {
 
   return (
     <nav className="navbar">
-      <h1>Skinstric</h1>
+      <h1></h1>
 
       {showEnterCode && (
         <button className="enter-code-btn">Enter Code</button>

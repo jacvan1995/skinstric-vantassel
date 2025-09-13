@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
-
+import SearchBar from "./components/skinstric/Intro/SearchBar";
 import CustomerForm from "./components/skinstric/Intro/CustomerForm";
 import CodeEntry from "./components/skinstric/Intro/CodeEntry";
 import CameraPermission from "./components/skinstric/Scan/CameraPermission";
@@ -12,6 +12,8 @@ import ConcernSelector from "./components/skinstric/Analysis/ConcernSelector";
 import RoutineSummary from "./components/skinstric/Routine/RoutineSummary";
 import ConfirmationPanel from "./components/skinstric/Routine/ConfirmationPanel";
 import StepWrapper from "./components/skinstric/Intro/StepWrapper";
+import buttonLeft from "./assets/buttonLeft.svg"
+import buttonRight from "./assets/buttonRight.svg"
 
 const SkinstricFlow = () => {
   const [step, setStep] = useState(0);
@@ -93,10 +95,12 @@ const SkinstricFlow = () => {
       {/* Bottom buttons */}
       <div className="button-row">
         <button className="discover-button" onClick={() => console.log("Discover A.I.")}>
+          <img src={buttonLeft} alt="" className="button-icon" />
           Discover A.I.
         </button>
         <button className="take-test-button" onClick={next}>
           Take Test
+          <img src={buttonRight} alt="" className="button-icon" />
         </button>
       </div>
     </div>
@@ -112,14 +116,19 @@ const SkinstricFlow = () => {
           />
         );
       case 2:
-        return (
-          <CameraPermission
-            onAllow={() => {
-              setCameraAllowed(true);
-              next();
-            }}
-          />
-        );
+  return (
+    <StepWrapper next={next}>
+      <CameraPermission onAllow={() => {
+        setCameraAllowed(true);
+        next();
+      }} />
+      <SearchBar
+        placeholder="Introduce yourself"
+        onSearch={(query) => console.log("Step 2 search:", query)}
+      />
+    </StepWrapper>
+  );
+
       case 3:
         return (
           <FaceScanInstructions
@@ -139,7 +148,15 @@ const SkinstricFlow = () => {
           />
         );
       case 5:
-        return <ScanProgress />;
+  return (
+    <StepWrapper next={next}>
+      <ScanProgress />
+      <SearchBar
+        placeholder="Where are you from?"
+        onSearch={(query) => console.log("Step 5 search:", query)}
+      />
+    </StepWrapper>
+  );
       case 6:
         return (
           <DemographicSummary

@@ -7,9 +7,6 @@ const StepWrapper = ({ children, next }) => (
 
     <main>{children}</main>
 
-    <footer>
-      <button onClick={next}>Next</button>
-    </footer>
   </div>
 );
 
