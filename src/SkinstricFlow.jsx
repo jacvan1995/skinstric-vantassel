@@ -1,215 +1,150 @@
-import React, { useState, useEffect, useRef } from "react";
-import { TransitionGroup, CSSTransition } from "react-transition-group";
-import SearchBar from "./components/skinstric/Intro/SearchBar";
-import CustomerForm from "./components/skinstric/Intro/CustomerForm";
+// src/flows/SkinstricFlow.jsx
+import React, { useState } from "react";
+import PageLayout from "./components/layout/PageLayout";
+import StepWrapper from "./components/skinstric/Intro/StepWrapper";
 import CodeEntry from "./components/skinstric/Intro/CodeEntry";
 import CameraPermission from "./components/skinstric/Scan/CameraPermission";
 import FaceScanInstructions from "./components/skinstric/Scan/FaceScanInstructions";
 import FaceScan from "./components/skinstric/Scan/FaceScan";
 import ScanProgress from "./components/skinstric/Scan/ScanProgress";
-import DemographicSummary from "./components/skinstric/Analysis/DemographicSummary";
-import ConcernSelector from "./components/skinstric/Analysis/ConcernSelector";
+import SearchBar from "./components/skinstric/Intro/SearchBar";
 import RoutineSummary from "./components/skinstric/Routine/RoutineSummary";
 import ConfirmationPanel from "./components/skinstric/Routine/ConfirmationPanel";
-import StepWrapper from "./components/skinstric/Intro/StepWrapper";
-import buttonLeft from "./assets/buttonLeft.svg"
-import buttonRight from "./assets/buttonRight.svg"
+import Subtitle from "./components/ui/Subtitle";
+
+import "./styles/SkinstricFlow.css";
 
 const SkinstricFlow = () => {
-  const [step, setStep] = useState(0);
-  const nodeRef = useRef(null);
-
+  const [step, setStep] = useState(1);
   const [code, setCode] = useState("");
   const [cameraAllowed, setCameraAllowed] = useState(false);
-  const [scanStarted, setScanStarted] = useState(false);
-  const [scanComplete, setScanComplete] = useState(false);
-  const [base64Image, setBase64Image] = useState("");
+  const [scanImage, setScanImage] = useState(null);
   const [concerns, setConcerns] = useState([]);
-  const [customer, setCustomer] = useState(null);
-
   const [demographics, setDemographics] = useState({
-    age: "28",
-    gender: "Female",
-    skinTone: "Medium",
+    age: "",
+    gender: "",
+    skinTone: "",
   });
 
   const next = () => setStep((prev) => prev + 1);
+  const back = () => setStep((prev) => prev - 1);
 
-  useEffect(() => {
-    if (scanComplete && base64Image) {
-      fetch(
-        "https://us-central1-api-skinstric-ai.cloudfunctions.net/skinstricPhaseTwo",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ image: base64Image }),
-        }
-      )
-        .then((res) => res.json())
-        .then((data) => {
-          setDemographics({
-            age: data.age,
-            gender: data.gender,
-            skinTone: data.skinTone,
-          });
-          next();
-        })
-        .catch((err) => console.error("PhaseTwo error:", err));
-    }
-  }, [scanComplete, base64Image]);
-
-  const renderStep = () => {
-    switch (step) {
-      case 0:
-        return (
-  <StepWrapper next={next}>
-    <div className="skinstric-intro">
-      <div className="skinstric-logo-row">
-      </div>
-
-      {/* Top-right button */}
-      <button className="enter-code-button" onClick={() => setStep(1)}>
-        Enter Code
-      </button>
-
-      {/* Main form */}
-      <CustomerForm
-        onSubmit={(formData) => {
-          fetch(
-            "https://us-central1-api-skinstric-ai.cloudfunctions.net/skinstricPhaseOne",
-            {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify(formData),
-            }
-          )
-            .then((res) => res.json())
-            .then((data) => {
-              setCustomer(data);
-              next();
-            })
-            .catch((err) => console.error("PhaseOne error:", err));
-        }}
-      />
-
-      {/* Bottom buttons */}
-      <div className="button-row">
-        <button className="discover-button" onClick={() => console.log("Discover A.I.")}>
-          <img src={buttonLeft} alt="" className="button-icon" />
-          Discover A.I.
-        </button>
-        <button className="take-test-button" onClick={next}>
-          Take Test
-          <img src={buttonRight} alt="" className="button-icon" />
-        </button>
-      </div>
-    </div>
-  </StepWrapper>
-);
-      case 1:
-        return (
+  switch (step) {
+    case 1:
+      return (
+        <PageLayout showFooter={false}>
           <CodeEntry
             onSubmit={(enteredCode) => {
               setCode(enteredCode);
               next();
             }}
           />
-        );
-      case 2:
-  return (
-    <StepWrapper next={next}>
-      <CameraPermission onAllow={() => {
-        setCameraAllowed(true);
-        next();
-      }} />
-      <SearchBar
-        placeholder="Introduce yourself"
-        onSearch={(query) => console.log("Step 2 search:", query)}
-      />
-    </StepWrapper>
-  );
+        </PageLayout>
+      );
 
-      case 3:
-        return (
-          <FaceScanInstructions
-            onStart={() => {
-              setScanStarted(true);
+    case 2:
+      return (
+        <StepWrapper next={next}>
+          <CameraPermission
+            onAllow={() => {
+              setCameraAllowed(true);
               next();
             }}
           />
-        );
-      case 4:
-        return (
+          <SearchBar
+            placeholder="Introduce yourself"
+            onSearch={(query) => console.log("Step 2 search:", query)}
+          />
+        </StepWrapper>
+      );
+
+    case 3:
+      return (
+        <StepWrapper next={next} back={back}>
+          <FaceScanInstructions onContinue={next} />
+        </StepWrapper>
+      );
+
+    case 4:
+      return (
+        <StepWrapper next={next} back={back}>
           <FaceScan
-            onComplete={(imageData) => {
-              setBase64Image(imageData);
-              setScanComplete(true);
-            }}
-          />
-        );
-      case 5:
-  return (
-    <StepWrapper next={next}>
-      <ScanProgress />
-      <SearchBar
-        placeholder="Where are you from?"
-        onSearch={(query) => console.log("Step 5 search:", query)}
-      />
-    </StepWrapper>
-  );
-      case 6:
-        return (
-          <DemographicSummary
-            age={demographics.age}
-            gender={demographics.gender}
-            skinTone={demographics.skinTone}
-            onContinue={next}
-          />
-        );
-      case 7:
-        return (
-          <ConcernSelector
-            onSelect={(selectedConcerns) => {
-              setConcerns(selectedConcerns);
+            onComplete={(base64Image) => {
+              setScanImage(base64Image);
               next();
             }}
           />
-        );
-      case 8:
-        return (
+        </StepWrapper>
+      );
+
+    case 5:
+      return (
+        <StepWrapper next={next} back={back}>
+          <ScanProgress onComplete={next} />
+          <SearchBar
+            placeholder="Where are you from?"
+            onSearch={(query) =>
+              setDemographics((prev) => ({ ...prev, location: query }))
+            }
+          />
+        </StepWrapper>
+      );
+
+    case 6:
+      return (
+        <StepWrapper next={next} back={back}>
+          <Subtitle indent={true}>What are your top skin concerns?</Subtitle>
+          <SearchBar
+            placeholder="e.g. dryness, acne, redness"
+            onSearch={(query) => setConcerns(query.split(",").map((c) => c.trim()))}
+          />
+        </StepWrapper>
+      );
+
+    case 7:
+      return (
+        <StepWrapper next={next} back={back}>
+          <Subtitle indent={true}>Tell us more about your skin</Subtitle>
+          <SearchBar
+            placeholder="Age, gender, skin tone"
+            onSearch={(query) => {
+              const [age, gender, skinTone] = query.split(",").map((s) => s.trim());
+              setDemographics({ age, gender, skinTone });
+              next();
+            }}
+          />
+        </StepWrapper>
+      );
+
+    case 8:
+      return (
+        <PageLayout showFooter={false}>
           <RoutineSummary
             concerns={concerns}
             demographics={demographics}
             onConfirm={next}
           />
-        );
-      case 9:
-        return (
+        </PageLayout>
+      );
+
+    case 9:
+      return (
+        <PageLayout showFooter={false}>
           <ConfirmationPanel
             onFinish={() => {
               console.log("Routine confirmed. Flow complete.");
             }}
           />
-        );
-      default:
-        return <div>Flow complete or step not implemented.</div>;
-    }
-  };
+        </PageLayout>
+      );
 
-  return (
-    <TransitionGroup component="div" className="transition-wrapper">
-      <CSSTransition
-        key={step}
-        classNames="page-slide"
-        timeout={400}
-        nodeRef={nodeRef}
-      >
-        <main ref={nodeRef} className="skinstric-flow">
-          {renderStep()}
-        </main>
-      </CSSTransition>
-    </TransitionGroup>
-  );
+    default:
+      return (
+        <PageLayout showFooter={false}>
+          <h2>Unknown step</h2>
+        </PageLayout>
+      );
+  }
 };
 
 export default SkinstricFlow;

@@ -1,0 +1,46 @@
+.concern-selector {
+  text-align: center;
+  padding: 2rem;
+}
+
+.selector-title {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: #242424;
+}
+
+.concern-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.concern-item {
+  padding: 0.75rem 1.25rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  background-color: #f9f9f9;
+  transition: background-color 0.3s ease;
+}
+
+.concern-item.selected {
+  background-color: #222;
+  color: #fff;
+  border-color: #222;
+}
+
+.confirm-button {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}

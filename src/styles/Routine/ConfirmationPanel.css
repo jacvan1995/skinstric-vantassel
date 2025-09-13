@@ -1,0 +1,29 @@
+.confirmation-panel {
+  text-align: center;
+  padding: 2rem;
+}
+
+.confirmation-title {
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+  color: #242424;
+}
+
+.confirmation-message {
+  font-size: 1.1rem;
+  color: #444;
+  margin-bottom: 2rem;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.confirmation-button {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}

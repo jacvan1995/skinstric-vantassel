@@ -1,0 +1,25 @@
+/* src/flows/SkinstricFlow.css */
+
+.skinstric-flow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+}
+
+.skinstric-flow h2 {
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+  color: #242424;
+}
+
+.skinstric-flow .subtitle {
+  font-size: 128px;
+  font-weight: 400;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.skinstric-flow .search-bar {
+  margin-top: 2rem;
+}

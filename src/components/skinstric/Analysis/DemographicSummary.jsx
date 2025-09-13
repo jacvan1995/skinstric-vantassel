@@ -1,17 +1,29 @@
-import React from 'react';
+// src/components/skinstric/Analysis/DemographicSummary.jsx
+import React from "react";
+import PropTypes from "prop-types";
+import "./DemographicSummary.css";
 
-const DemographicSummary = ({ age, gender, skinTone, onContinue }) => (
+const DemographicSummary = ({ age, gender, skinTone, onContinue }) => {
+  return (
+    <div className="demographic-summary">
+      <h2 className="summary-title">Your Skin Profile</h2>
+      <ul className="summary-list">
+        <li><strong>Age:</strong> {age}</li>
+        <li><strong>Gender:</strong> {gender}</li>
+        <li><strong>Skin Tone:</strong> {skinTone}</li>
+      </ul>
+      <button className="continue-button" onClick={onContinue}>
+        Continue
+      </button>
+    </div>
+  );
+};
 
-  <section className="demographic-summary">
-    <h2>Your Profile Summary</h2>
-    <ul>
-      <li><strong>Estimated Age:</strong> {age}</li>
-      <li><strong>Gender:</strong> {gender}</li>
-      <li><strong>Skin Tone:</strong> {skinTone}</li>
-    </ul>
-    <p>This helps us tailor your skincare routine to your unique profile.</p>
-    <button onClick={onContinue}>Next</button>
-  </section>
-);
+DemographicSummary.propTypes = {
+  age: PropTypes.string.isRequired,
+  gender: PropTypes.string.isRequired,
+  skinTone: PropTypes.string.isRequired,
+  onContinue: PropTypes.func.isRequired,
+};
 
 export default DemographicSummary;

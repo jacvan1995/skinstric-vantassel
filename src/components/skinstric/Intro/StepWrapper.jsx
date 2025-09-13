@@ -1,13 +1,20 @@
-const StepWrapper = ({ children, next }) => (
-  <div className="skinstric-wrapper">
-    <header className="skinstric-logo-row">
-      <h1 className="skinstric-logo-text">SKINSTRIC</h1>
-      <span className="skinstric-info-text">[ INTRO ]</span>
-    </header>
+// src/components/skinstric/Intro/StepWrapper.jsx
+import React from "react";
+import PropTypes from "prop-types";
+import PageLayout from "../../layout/PageLayout";
 
-    <main>{children}</main>
+const StepWrapper = ({ children, showFooter = true, topRightButton = null }) => {
+  return (
+    <PageLayout showFooter={showFooter} topRightButton={topRightButton}>
+      {children}
+    </PageLayout>
+  );
+};
 
-  </div>
-);
+StepWrapper.propTypes = {
+  children: PropTypes.node.isRequired,
+  showFooter: PropTypes.bool,
+  topRightButton: PropTypes.node,
+};
 
 export default StepWrapper;

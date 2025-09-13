@@ -1,0 +1,75 @@
+/* Base font setup */
+body {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  color: #242424;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+}
+
+/* Headings */
+h1, .heading-xl {
+  font-size: 2.5rem;
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+h2, .heading-lg {
+  font-size: 1.75rem;
+  font-weight: 500;
+  line-height: 1.3;
+  margin-bottom: 1rem;
+}
+
+h3, .heading-md {
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 1.4;
+  margin-bottom: 0.75rem;
+}
+
+h4, .heading-sm {
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.4;
+  margin-bottom: 0.5rem;
+}
+
+/* Paragraphs */
+p, .body-text {
+  font-size: 1rem;
+  font-weight: 400;
+  color: #444;
+  margin-bottom: 1rem;
+}
+
+/* Captions and small text */
+.caption, .text-sm {
+  font-size: 0.875rem;
+  color: #666;
+  line-height: 1.4;
+}
+
+/* Emphasis */
+strong {
+  font-weight: 600;
+}
+
+em {
+  font-style: italic;
+}
+
+/* Utility classes */
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}

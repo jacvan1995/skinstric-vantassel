@@ -1,0 +1,26 @@
+.search-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
+}
+
+.search-input {
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 280px;
+  text-align: left;
+}
+
+.search-submit-btn {
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}

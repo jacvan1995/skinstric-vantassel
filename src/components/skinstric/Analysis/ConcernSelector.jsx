@@ -1,13 +1,16 @@
-import React, { useState } from 'react';
+// src/components/skinstric/Analysis/ConcernSelector.jsx
+import React, { useState } from "react";
+import "./ConcernSelector.css";
 
 const concernOptions = [
-  'Acne',
-  'Dryness',
-  'Redness',
-  'Oiliness',
-  'Dark Spots',
-  'Sensitivity',
-  'Uneven Texture',
+  "Acne",
+  "Dryness",
+  "Oiliness",
+  "Redness",
+  "Wrinkles",
+  "Dark Spots",
+  "Sensitivity",
+  "Uneven Texture",
 ];
 
 const ConcernSelector = ({ onSelect }) => {
@@ -21,23 +24,30 @@ const ConcernSelector = ({ onSelect }) => {
     );
   };
 
+  const handleConfirm = () => {
+    if (selected.length > 0) {
+      onSelect(selected);
+    }
+  };
+
   return (
-    <section className="concern-selector">
-      <h2>What Are Your Skin Concerns?</h2>
-      <p>Select all that apply. This helps us tailor your routine.</p>
+    <div className="concern-selector">
+      <h2 className="selector-title">What are your skincare concerns?</h2>
       <ul className="concern-list">
         {concernOptions.map((concern) => (
           <li
             key={concern}
-            className={selected.includes(concern) ? 'selected' : ''}
+            className={`concern-item ${selected.includes(concern) ? "selected" : ""}`}
             onClick={() => toggleConcern(concern)}
           >
             {concern}
           </li>
         ))}
       </ul>
-      <button onClick={() => onSelect(selected)}>Continue</button>
-    </section>
+      <button className="confirm-button" onClick={handleConfirm}>
+        Confirm Selection
+      </button>
+    </div>
   );
 };
 

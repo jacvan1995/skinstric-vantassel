@@ -1,0 +1,48 @@
+.face-scan {
+  text-align: center;
+  padding: 2rem;
+}
+
+.scan-title {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #242424;
+}
+
+.scan-instructions {
+  font-size: 1.1rem;
+  color: #444;
+  margin-bottom: 1.5rem;
+}
+
+.scan-error {
+  color: red;
+  font-size: 1rem;
+  margin-top: 1rem;
+}
+
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto 2rem;
+  border: 2px solid #ccc;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.scan-video {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
+.scan-capture-btn {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
