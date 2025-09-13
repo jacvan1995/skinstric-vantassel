@@ -11,6 +11,7 @@ import DemographicSummary from "./components/skinstric/Analysis/DemographicSumma
 import ConcernSelector from "./components/skinstric/Analysis/ConcernSelector";
 import RoutineSummary from "./components/skinstric/Routine/RoutineSummary";
 import ConfirmationPanel from "./components/skinstric/Routine/ConfirmationPanel";
+import StepWrapper from "./components/skinstric/Intro/StepWrapper";
 
 const SkinstricFlow = () => {
   const [step, setStep] = useState(0);
@@ -34,11 +35,14 @@ const SkinstricFlow = () => {
 
   useEffect(() => {
     if (scanComplete && base64Image) {
-      fetch("https://us-central1-api-skinstric-ai.cloudfunctions.net/skinstricPhaseTwo", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ image: base64Image }),
-      })
+      fetch(
+        "https://us-central1-api-skinstric-ai.cloudfunctions.net/skinstricPhaseTwo",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ image: base64Image }),
+        }
+      )
         .then((res) => res.json())
         .then((data) => {
           setDemographics({
@@ -56,22 +60,48 @@ const SkinstricFlow = () => {
     switch (step) {
       case 0:
         return (
-          <CustomerForm
-            onSubmit={(formData) => {
-              fetch("https://us-central1-api-skinstric-ai.cloudfunctions.net/skinstricPhaseOne", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(formData),
-              })
-                .then((res) => res.json())
-                .then((data) => {
-                  setCustomer(data);
-                  next();
-                })
-                .catch((err) => console.error("PhaseOne error:", err));
-            }}
-          />
-        );
+  <StepWrapper next={next}>
+    <div className="skinstric-intro">
+      <div className="skinstric-logo-row">
+      </div>
+
+      {/* Top-right button */}
+      <button className="enter-code-button" onClick={() => setStep(1)}>
+        Enter Code
+      </button>
+
+      {/* Main form */}
+      <CustomerForm
+        onSubmit={(formData) => {
+          fetch(
+            "https://us-central1-api-skinstric-ai.cloudfunctions.net/skinstricPhaseOne",
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(formData),
+            }
+          )
+            .then((res) => res.json())
+            .then((data) => {
+              setCustomer(data);
+              next();
+            })
+            .catch((err) => console.error("PhaseOne error:", err));
+        }}
+      />
+
+      {/* Bottom buttons */}
+      <div className="button-row">
+        <button className="discover-button" onClick={() => console.log("Discover A.I.")}>
+          Discover A.I.
+        </button>
+        <button className="take-test-button" onClick={next}>
+          Take Test
+        </button>
+      </div>
+    </div>
+  </StepWrapper>
+);
       case 1:
         return (
           <CodeEntry
