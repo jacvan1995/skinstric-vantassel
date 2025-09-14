@@ -1,13 +1,11 @@
 import './App.css';
 import React from "react";
-import { UserProvider } from "./contexts/UserContext";
 import SkinstricFlow from "./SkinstricFlow";
+import Landing from './pages/landing';
 
 function App() {
   return (
-    <UserProvider>
-      <SkinstricFlow />
-    </UserProvider>
+    <Landing/>
   );
 }
 
