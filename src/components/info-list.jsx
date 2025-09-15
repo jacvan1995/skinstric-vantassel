@@ -1,7 +1,4 @@
-
-
-const InfoList = ({ type }) => {
-  const raceList = [
+export const raceList = [
     "White",
     "Black or African American",
     "Asian",
@@ -9,9 +6,9 @@ const InfoList = ({ type }) => {
     "Native American",
     "Pacific Islander",
     "Middle Eastern"
-  ];
+];
 
-  const ageList = [
+export const ageList = [
     "Under 18",
     "18–24",
     "25–34",
@@ -19,8 +16,9 @@ const InfoList = ({ type }) => {
     "45–54",
     "55–64",
     "65-74",
-  ];
+];
 
+const InfoList = ({ type }) => {
   const selectedList = type === "race" ? raceList : ageList;
 
   return (

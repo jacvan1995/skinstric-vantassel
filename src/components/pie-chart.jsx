@@ -1,12 +1,20 @@
 import React from "react";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Pie } from "react-chartjs-2";
+import { generateRandomPercentages } from "./info-perc";
+
+const percentages = generateRandomPercentages()
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-const PieChart = ({ percentages }) => {
+const PieChart = ({ labels }) => {
+  if (!Array.isArray(percentages)) {
+    console.error("PieChart expected an array but got:", percentages);
+    return null;
+  }
+
   const data = {
-    labels: percentages.map((_, i) => `Segment ${i + 1}`),
+    labels: labels || percentages.map((_, i) => `Segment ${i + 1}`),
     datasets: [
       {
         data: percentages,

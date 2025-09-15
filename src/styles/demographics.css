@@ -1,0 +1,177 @@
+/* === Base Layout === */
+body, section {
+  font-family: 'Helvetica Neue', sans-serif;
+  background-color: #ffffff;
+  color: #1a1a1a;
+  margin: 0;
+  padding: 0;
+}
+
+section {
+  width: 960px;
+  margin: 0 auto;
+  padding: 40px 0;
+}
+
+/* === Branding Header === */
+nav {
+  text-align: left;
+}
+
+.logo {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.logo .light {
+  font-weight: 300;
+  color: #999;
+}
+
+/* === Analysis Header === */
+.header {
+  text-align: left;
+  margin-bottom: 40px;
+}
+
+.header-orbital {
+  font-size: 14px;
+  letter-spacing: 2px;
+  color: #999;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.header-main {
+  font-size: 36px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.header-sub {
+  font-size: 16px;
+  font-weight: 400;
+  color: #666;
+  margin-top: 8px;
+}
+
+/* === Info Boxes === */
+.info-container {
+  display: flex;
+  gap: 40px;
+}
+
+.info-column {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.info-box {
+  background-color: #f2f2f2;
+  border: 1px solid #ccc;
+  width: 208px;
+  height: 104px;
+  padding: 24px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 600;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* === Graph Section === */
+.info-graph {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.info-display {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+
+/* === Pie Chart === */
+.pie-chart-container {
+  max-width: 320px;
+  width: 100%;
+}
+
+/* === Confidence Breakdown === */
+.info-chart {
+  background-color: #f2f2f2;
+  border: 1px solid #ccc;
+  padding: 24px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.info-chart-heading {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 700;
+  font-size: 16px;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.info-chart-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+/* === Lists === */
+.info-list-race,
+.info-list-age,
+.percentage-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.align-left {
+  text-align: left;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.list-item {
+  padding: 8px 0;
+  font-size: 16px;
+}
+
+/* === Highlighting === */
+.list-item.highlight {
+  font-weight: bold;
+  color: #2196f3;
+}
+
+/* === Buttons === */
+.button-row {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 48px;
+}
+
+.button-row button {
+  padding: 12px 32px;
+  font-size: 16px;
+  border: none;
+  background-color: #1a1a1a;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.button-row button:hover {
+  background-color: #333;
+}

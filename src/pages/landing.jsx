@@ -3,8 +3,15 @@ import buttonRight from "../assets/buttonRight.svg";
 import rectangleLeft from "../assets/RectangleLeft.svg";
 import rectangleRight from "../assets/RectangleRight.svg";
 import "../styles/landing.css";
+import { useNavigate } from "react-router-dom";
 
 const Landing = () => {
+  const Navigate = useNavigate()
+
+  const handleTakeTest = () => {
+    Navigate("/demographics")
+  }
+
   return (
     <section>
       <nav>
@@ -26,7 +33,7 @@ const Landing = () => {
           <br />
           skincare
         </h2>
-        <button className="rgt-trn">
+        <button className="rgt-trn" onClick={handleTakeTest}>
           <span className="btn-txt">TAKE TEST</span>
           <img src={buttonRight} className="btn-right" />
         </button>

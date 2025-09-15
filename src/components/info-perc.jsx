@@ -1,11 +1,13 @@
-import InfoList from "./info-list";
 
-const getRandomPercentage = () => {
-  return Math.floor(Math.random() * 101);
+
+export const generateRandomPercentages = (count) => {
+  const values = Array.from({ length: count }, () => Math.random());
+  const total = values.reduce((sum, val) => sum + val, 0);
+  return values.map((val) => Math.round((val / total) * 100));
 };
 
 const Value = () => {
-  const percentage = getRandomPercentage(7);
+const percentage = generateRandomPercentages(7);
 
   return (
     <ul className="percentage-list align-right">
@@ -13,7 +15,6 @@ const Value = () => {
         <li key={index} className="list-item">{value}%</li>
       ))}
     </ul>
-
   );
 };
 
