@@ -1,18 +1,31 @@
+import React from "react";
 import InfoList, { raceList, ageList } from "../components/info-list";
 import Percentage, { generateRandomPercentages } from "../components/info-perc";
 import PieChart from "../components/pie-chart";
 import "../styles/demographics.css";
 
 const Demographics = () => {
+  // Toggle between "race" or "age"
   const selectedInfo = "race";
-  const activeList = selectedInfo === "race" ? raceList : ageList;
-  const activePercentages = generateRandomPercentages(activeList.length);
+
+  // Generate predictions
+  const racePercentages = generateRandomPercentages(raceList.length);
+  const agePercentages = generateRandomPercentages(ageList.length);
+
+  const racePrediction =
+    raceList[racePercentages.indexOf(Math.max(...racePercentages))];
+  const agePrediction =
+    ageList[agePercentages.indexOf(Math.max(...agePercentages))];
 
   const generateRandomSex = () => (Math.random() < 0.5 ? "Male" : "Female");
   const Sex = generateRandomSex();
 
+  // Active data for chart + breakdown
+  const activeList = selectedInfo === "race" ? raceList : ageList;
+  const activePercentages =
+    selectedInfo === "race" ? racePercentages : agePercentages;
   const predictedLabel =
-    activeList[activePercentages.indexOf(Math.max(...activePercentages))];
+    selectedInfo === "race" ? racePrediction : agePrediction;
 
   return (
     <section>
@@ -31,27 +44,27 @@ const Demographics = () => {
       </div>
 
       <div className="info-container">
-        <div className="info-column">
-          <div className="info-box">
-            {selectedInfo === "race" ? predictedLabel : ""}
-            <br />
-            RACE
+        <div className="selection-container">
+          <div
+            className={`info-box ${selectedInfo === "race" ? "active" : ""}`}
+          >
+            <div className="info-top">{racePrediction}</div>
+            <div className="info-bottom">RACE</div>
           </div>
-          <div className="info-box">
-            {selectedInfo === "age" ? predictedLabel : ""}
-            <br />
-            AGE
+
+          <div className={`info-box ${selectedInfo === "age" ? "active" : ""}`}>
+            <div className="info-top">{agePrediction}</div>
+            <div className="info-bottom">AGE</div>
           </div>
+
           <div className="info-box">
-            {Sex}
-            <br />
-            SEX
+            <div className="info-top">{Sex}</div>
+            <div className="info-bottom">SEX</div>
           </div>
         </div>
-
         <div className="info-graph">
-          <div className="info-display">{`${predictedLabel}, ${Sex}`}</div>
-          <PieChart percentages={activePercentages} labels={activeList} />
+          <div className="info-display">{`${racePrediction}, ${agePrediction}, ${Sex}`}</div>
+          <PieChart labels={activeList} percentages={activePercentages} />
         </div>
 
         <div className="info-chart">
