@@ -62,7 +62,7 @@ section {
 
 .btn-right,
 .btn-left {
-    transform: scale(75%);
+  transform: scale(75%);
 }
 
 .lft-trn:hover,
@@ -73,7 +73,6 @@ section {
 .main-title {
   font-size: 128px;
   font-weight: 300;
-  margin: 2rem 0;
 }
 
 .opening-footer {
@@ -86,13 +85,13 @@ section {
 }
 
 .rectangle-left {
-    position: absolute;
+  position: absolute;
   top: 0%;
   left: 0%;
 }
 
 .rectangle-right {
-    position: absolute;
+  position: absolute;
   top: 0%;
   right: 0%;
 }

@@ -1,0 +1,81 @@
+.introduce-screen {
+  position: relative;
+  min-height: 100vh;
+  padding-bottom: 64px;
+}
+
+.input-container {
+  display: flex;
+  justify-content: center;
+}
+
+.logo {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.light {
+  font-weight: 300;
+  color: #888;
+}
+
+.introduce-content {
+  margin-top: 64px;
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.rombus {
+  position: absolute;
+  top: -60px;
+  left: 120px;
+  width: 762px;
+  height: 762px;
+  z-index: 0;
+}
+
+.footer {
+  margin-bottom: 24px;
+}
+
+.button-left {
+  transform: scale(75%);
+}
+
+.intro-heading {
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.intro-subtext {
+  font-size: 14px;
+  margin-bottom: 24px;
+}
+
+.intro-input {
+  width: 420px;
+  height: 65px;
+  padding: 12px;
+  font-size: 60px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  display: flex;
+  text-align: center;
+  z-index: 50;
+}
+
+.back-button {
+  position: absolute;
+  bottom: 24px;
+  left: 24px;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  font-size: 14px;
+  color: #555;
+  cursor: pointer;
+}
