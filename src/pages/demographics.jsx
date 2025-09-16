@@ -8,19 +8,6 @@ const Demographics = () => {
   const activeList = selectedInfo === "race" ? raceList : ageList;
   const activePercentages = generateRandomPercentages(activeList.length);
 
-  const racePrediction =
-    raceList[
-      generateRandomPercentages(raceList.length).indexOf(
-        Math.max(...generateRandomPercentages(raceList.length))
-      )
-    ];
-  const agePrediction =
-    ageList[
-      generateRandomPercentages(ageList.length).indexOf(
-        Math.max(...generateRandomPercentages(ageList.length))
-      )
-    ];
-
   const generateRandomSex = () => (Math.random() < 0.5 ? "Male" : "Female");
   const Sex = generateRandomSex();
 
