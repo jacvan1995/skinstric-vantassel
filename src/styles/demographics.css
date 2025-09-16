@@ -74,16 +74,31 @@ nav {
 }
 
 .info-box {
-  background-color: #f2f2f2;
-  border: 1px solid #ccc;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   width: 208px;
   height: 104px;
   padding: 12px;
-  gap: 8px;
+  background-color: #f2f2f2;
+  border: 1px solid #ccc;
   text-align: center;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 600;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.info-top {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: auto;
+}
+
+.info-bottom {
+  font-size: 14px;
+  font-weight: 700;
+  color: #666;
+  margin-top: auto;
 }
 
 /* === Graph Section === */
@@ -136,6 +151,14 @@ nav {
   list-style: none;
   padding: 0;
   margin: 0;
+}
+
+.info-chart-item::before {
+  content: "◆";
+  position: relative;
+  color: #242424;
+  font-size: 14px;
+  line-height: 1;
 }
 
 .align-left {
