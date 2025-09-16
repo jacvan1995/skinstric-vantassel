@@ -1,17 +1,31 @@
 import InfoList, { raceList, ageList } from "../components/info-list";
 import Percentage, { generateRandomPercentages } from "../components/info-perc";
 import PieChart from "../components/pie-chart";
-import "../styles/demographics.css"
+import "../styles/demographics.css";
 
 const Demographics = () => {
   const selectedInfo = "race";
   const activeList = selectedInfo === "race" ? raceList : ageList;
   const activePercentages = generateRandomPercentages(activeList.length);
 
+  const racePrediction =
+    raceList[
+      generateRandomPercentages(raceList.length).indexOf(
+        Math.max(...generateRandomPercentages(raceList.length))
+      )
+    ];
+  const agePrediction =
+    ageList[
+      generateRandomPercentages(ageList.length).indexOf(
+        Math.max(...generateRandomPercentages(ageList.length))
+      )
+    ];
+
   const generateRandomSex = () => (Math.random() < 0.5 ? "Male" : "Female");
   const Sex = generateRandomSex();
 
-  const predictedLabel = activeList[activePercentages.indexOf(Math.max(...activePercentages))];
+  const predictedLabel =
+    activeList[activePercentages.indexOf(Math.max(...activePercentages))];
 
   return (
     <section>
