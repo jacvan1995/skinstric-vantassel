@@ -5,27 +5,23 @@ import PieChart from "../components/pie-chart";
 import "../styles/demographics.css";
 
 const Demographics = () => {
-  // Toggle between "race" or "age"
-  const selectedInfo = "race";
+  const selectedInfo = "race"; // toggle between "race" or "age"
 
   // Generate predictions
   const racePercentages = generateRandomPercentages(raceList.length);
   const agePercentages = generateRandomPercentages(ageList.length);
 
-  const racePrediction =
-    raceList[racePercentages.indexOf(Math.max(...racePercentages))];
-  const agePrediction =
-    ageList[agePercentages.indexOf(Math.max(...agePercentages))];
+  const racePrediction = raceList[racePercentages.indexOf(Math.max(...racePercentages))];
+  const agePrediction = ageList[agePercentages.indexOf(Math.max(...agePercentages))];
 
   const generateRandomSex = () => (Math.random() < 0.5 ? "Male" : "Female");
   const Sex = generateRandomSex();
 
   // Active data for chart + breakdown
   const activeList = selectedInfo === "race" ? raceList : ageList;
-  const activePercentages =
-    selectedInfo === "race" ? racePercentages : agePercentages;
-  const predictedLabel =
-    selectedInfo === "race" ? racePrediction : agePrediction;
+  const activePercentages = selectedInfo === "race" ? racePercentages : agePercentages;
+  const predictedLabel = selectedInfo === "race" ? racePrediction : agePrediction;
+  const maxValue = Math.max(...activePercentages);
 
   return (
     <section>
@@ -44,24 +40,21 @@ const Demographics = () => {
       </div>
 
       <div className="info-container">
-        <div className="selection-container">
-          <div
-            className={`info-box ${selectedInfo === "race" ? "active" : ""}`}
-          >
+        <div className="info-column">
+          <div className={`info-box ${selectedInfo === "race" ? "active" : ""}`}>
             <div className="info-top">{racePrediction}</div>
             <div className="info-bottom">RACE</div>
           </div>
-
           <div className={`info-box ${selectedInfo === "age" ? "active" : ""}`}>
             <div className="info-top">{agePrediction}</div>
             <div className="info-bottom">AGE</div>
           </div>
-
           <div className="info-box">
             <div className="info-top">{Sex}</div>
             <div className="info-bottom">SEX</div>
           </div>
         </div>
+
         <div className="info-graph">
           <div className="info-display">{`${racePrediction}, ${agePrediction}, ${Sex}`}</div>
           <PieChart labels={activeList} percentages={activePercentages} />
@@ -72,9 +65,25 @@ const Demographics = () => {
             <div>{selectedInfo.toUpperCase()}</div>
             <div>A.I. CONFIDENCE</div>
           </div>
+
           <div className="info-chart-row">
-            <InfoList items={activeList} type={selectedInfo} />
-            <Percentage percentages={activePercentages} />
+            <ul className={`info-list-${selectedInfo}`}>
+              {activeList.map((item, i) => (
+                <li key={i} className="list-item">{item}</li>
+              ))}
+            </ul>
+
+            <ul className="percentage-list align-right">
+              
+              {activePercentages.map((value, i) => {
+                const isTop = value === maxValue;
+                return (
+                  <li key={i} className={`list-item ${isTop ? "selected" : ""}`}>
+                    {value}%
+                  </li>
+                );
+              })}
+            </ul>
           </div>
         </div>
       </div>

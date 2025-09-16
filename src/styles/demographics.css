@@ -85,7 +85,7 @@ nav {
   text-align: center;
   font-size: 14px;
   font-weight: 600;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .info-top {
@@ -141,6 +141,7 @@ nav {
 .info-chart-row {
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
   gap: 40px;
 }
 
@@ -153,12 +154,35 @@ nav {
   margin: 0;
 }
 
-.info-chart-item::before {
-  content: "◆";
+.info-list-race .list-item,
+.info-list-age .list-item {
+  font-size: 16px;
+  padding-left: 24px;
   position: relative;
+}
+
+.info-list-race .list-item::before,
+.info-list-age .list-item::before {
+  content: "◇";
+  position: absolute;
+  left: 0;
   color: #242424;
   font-size: 14px;
   line-height: 1;
+  transition: color 0.2s ease;
+}
+
+.info-list-race .list-item.selected::before,
+.info-list-age .list-item.selected::before {
+  content: "◆";
+}
+
+.list-item:hover::before {
+  color: #555555;
+}
+
+.list-item.selected::before {
+  transition: color 0.3s ease, content 0.3s ease;
 }
 
 .align-left {
