@@ -20,48 +20,79 @@
   object-fit: cover;
 }
 
-.overlay-text {
+/* Top-left logo */
+.camera-nav {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: white;
-  text-align: center;
-  z-index: 10000;
+  top: 32px;
+  left: 32px;
+  z-index: 10001;
 }
 
-.overlay-text p {
+.logo {
+  font-size: 18px;
+  font-weight: bold;
+  color: #242424;
+}
+
+.light {
+  font-weight: 300;
+  color: #ccc;
+}
+
+/* Bottom-center instructions */
+.overlay-text {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  color: white;
+  z-index: 10001;
+}
+
+.overlay-text h2 {
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.overlay-text ul {
+  display: flex;
+  list-style-type: "◇";
+  list-style-position: inside;
+  padding: 0 0 48px 0;
+  margin: 0;
+}
+
+.overlay-text li {
+  position: relative;
+  padding-left: 32px;
   font-size: 14px;
   margin: 4px 0;
   opacity: 0.9;
 }
 
-/* Take Picture Button */
+/* Bottom-right capture button */
 .capture-button {
-    position: absolute;
-    display: flex;
-    right: -500px;
-  background: none;
-  border: none;
-  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: absolute;
+  top: 50%;
+  right: 32px;
   z-index: 10001;
-  color: white;
-}
-
-.capture-inner {
-    border-radius: 50%;
-    height: 62px;
-    width: 62px;
 }
 
 .button-text {
-    display: flex;
-    align-items: center;
-    padding-right: 12px;
+  font-size: 14px;
+  margin-bottom: 8px;
+  color: #fff;
 }
 
-.capture-button img,
-.capture-button svg {
-  width: 28px;
-  height: 22px;
+.capture-inner {
+  height: 62px;
+  width: 62px;
+  border-radius: 50%;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
 }
