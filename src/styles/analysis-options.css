@@ -8,16 +8,6 @@
   box-sizing: border-box;
 }
 
-.logo {
-  font-size: 32px;
-  font-weight: bold;
-}
-
-.light {
-  font-weight: 300;
-  color: #888;
-}
-
 .analysis-header {
   margin-top: 48px;
 }

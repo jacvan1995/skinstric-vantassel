@@ -11,18 +11,6 @@ h2 {
   z-index: 0;
 }
 
-.logo {
-  font-size: 14px;
-  font-weight: bold;
-  display: flex;
-  text-align: left;
-}
-
-.light {
-  font-weight: 300;
-  color: #888;
-}
-
 .intro-content {
   margin-top: 64px;
 }
