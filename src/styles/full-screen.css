@@ -1,0 +1,55 @@
+.camera-overlay {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.overlay-text h1 {
+  font-size: 36px;
+  margin-bottom: 12px;
+}
+
+.overlay-text p {
+  font-size: 18px;
+  opacity: 0.8;
+}
+
+.camera-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 999999;
+  background-color: black;
+  pointer-events: auto;
+}
+
+.camera-wrapper::after {
+  content: "CAMERA OVERLAY ACTIVE";
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  color: red;
+  font-size: 24px;
+  z-index: 1000000;
+}
+
+.camera-feed {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.overlay-text {
+  position: absolute;
+  margin: 4px 0;
+  font-size: 18px;
+  opacity: 0.9;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-align: center;
+  z-index: 10000;
+}

@@ -34,3 +34,35 @@ header {
   flex-direction: column;
 }
 
+@media (max-width: 1200px) and (max-height: 800px) {
+  .rombus {
+    width: 80%;
+    max-width: 300px;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+  }
+
+  .intro-input {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .logo {
+    font-size: 24px;
+  }
+
+  .back-button {
+    bottom: 16px;
+    left: 16px;
+    font-size: 14px;
+  }
+
+  .header h2 {
+    font-size: 20px;
+  }
+
+  .intro-subtext {
+    font-size: 16px;
+  }
+}
