@@ -4,32 +4,56 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: 999999;
+  background-color: black;
+  z-index: 9999;
+}
+
+.camera-video-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: black;
 }
 
-.camera-overlay {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
 .camera-feed {
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   object-fit: cover;
+  background-color: black;
+  display: block;
 }
 
-/* Top-left logo */
+.camera-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.camera-nav,
+.overlay-text,
+.capture-button {
+  pointer-events: auto;
+  z-index: 10001;
+}
+
 .camera-nav {
   position: absolute;
   top: 32px;
   left: 32px;
-  z-index: 10001;
 }
 
 .logo {
-  font-size: 18px;
+  font-size: 14px;
   font-weight: bold;
   color: #242424;
 }
@@ -39,20 +63,22 @@
   color: #ccc;
 }
 
-/* Bottom-center instructions */
 .overlay-text {
   position: absolute;
   bottom: 32px;
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
-  color: white;
+  transition: color 0.5s ease;
   z-index: 10001;
 }
 
-.overlay-text h2 {
-  font-size: 14px;
-  margin-bottom: 8px;
+.overlay-text.loading-mode {
+  color: #242424;
+}
+
+.overlay-text.active-mode {
+  color: #fff;
 }
 
 .overlay-text ul {
@@ -64,14 +90,12 @@
 }
 
 .overlay-text li {
-  position: relative;
   padding-left: 32px;
   font-size: 14px;
   margin: 4px 0;
   opacity: 0.9;
 }
 
-/* Bottom-right capture button */
 .capture-button {
   display: flex;
   align-items: center;
@@ -79,7 +103,6 @@
   position: absolute;
   top: 50%;
   right: 32px;
-  z-index: 10001;
 }
 
 .button-text {
@@ -95,4 +118,103 @@
   cursor: pointer;
   background-color: transparent;
   border: none;
+}
+
+.capture-preview {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10002;
+}
+
+.preview-image {
+  max-width: 80%;
+  max-height: 80%;
+  border: 2px solid white;
+}
+
+.use-picture-prompt {
+  position: fixed;
+  bottom: 0%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 20px 30px;
+  border-radius: 8px;
+  color: white;
+  text-align: center;
+  z-index: 10003;
+}
+
+
+.prompt-text {
+  position: relative;
+  z-index: 10004;
+}
+
+.use-picture-prompt button {
+  margin: 0 10px;
+  padding: 10px 20px;
+  font-weight: bold;
+  background-color: white;
+  color: black;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.camera-loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #fff;
+  color: #242424;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+}
+
+.camera-loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #fff;
+  color: #242424;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+}
+
+.loading-spinner {
+  width: 481px;
+  height: 481px;
+  animation: spin 5s linear infinite;
+  margin-bottom: 20px;
+  opacity: 2;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.camera-setup {
+  position: absolute;
+  display: flex;
+  bottom: 40%;
+  font-size: 16px;
 }

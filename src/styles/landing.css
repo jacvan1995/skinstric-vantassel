@@ -1,18 +1,24 @@
-html,
-body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
+/* Reset and base layout */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 section {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-.btn-txt {
-    font-size: 14px;
+/* Logo and header */
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.light {
+  font-weight: 300;
 }
 
 .btn-blk {
@@ -27,28 +33,93 @@ section {
   border-radius: 2px;
 }
 
+/* Main layout */
 .opening-page {
-  text-align: center;
-  padding: 4rem 2rem;
+  position: relative;
   display: flex;
-  justify-content: space-between;
+  flex-direction: row;
+  justify-content: center;
   align-items: center;
+  padding: 4rem 6rem;
+  gap: 3rem;
+  min-height: 80vh;
 }
 
+.opening-footer {
+  position: absolute;
+  bottom: 32px;
+  left: 32px;
+  font-size: 14px;
+  color: #666;
+  text-align: left;
+  line-height: 1.5;
+  max-width: 300px;
+}
+
+/* Title wrapper for animation */
+.title-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition:
+    transform 0.8s cubic-bezier(0.25, 1, 0.5, 1),
+    justify-content 3s ease 3s; /* delayed shift */
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+.opening-page.hover-mode .title-wrapper {
+  transform: translateX(-20vw);
+  justify-content: flex-start;
+}
+
+
+
+/* Title itself */
+.main-title {
+  font-size: clamp(48px, 10vw, 128px);
+  font-weight: 300;
+  text-align: center;
+  white-space: nowrap;
+  transition: text-align 3s ease 3s, opacity 3s ease;
+}
+
+/* Hover behavior */
+.opening-page.hover-mode .main-title {
+  text-align: left;
+  opacity: 0.95;
+}
+
+.opening-page.hover-mode .lft-trn {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Buttons */
 .lft-trn,
 .rgt-trn {
+  min-width: 150px;
+  height: 44px;
   display: flex;
   align-items: center;
+  justify-content: center;
+  background: transparent;
   border: none;
-  background-color: transparent;
   cursor: pointer;
   transition: background-color 0.2s ease;
-  height: 44px;
-  width: 150px;
-  letter-spacing: -2%;
-  line-height: 16px;
   z-index: 2;
   position: relative;
+}
+
+.lft-trn {
+  transition: opacity 0.5s ease;
+}
+
+.btn-right:hover,
+.lft-trn:hover {
+  transform: scale(1);
+  transition: all 300ms ease;
 }
 
 .btn-right,
@@ -56,16 +127,24 @@ section {
   transform: scale(75%);
 }
 
-.lft-trn:hover,
-.rgt-trn:hover {
-  background-color: #e0e0e0;
+/* Decorative rectangles */
+.rectangle-left,
+.rectangle-right {
+  position: absolute;
+  top: 0;
+  width: 100px;
+  height: auto;
 }
 
-.main-title {
-  font-size: 128px;
-  font-weight: 300;
+.rectangle-left {
+  left: 0;
 }
 
+.rectangle-right {
+  right: 0;
+}
+
+/* Footer */
 .opening-footer {
   font-size: 14px;
   color: #666;
@@ -75,14 +154,41 @@ section {
   margin-bottom: 16px;
 }
 
-.rectangle-left {
-  position: absolute;
-  top: 0%;
-  left: 0%;
-}
+/* Responsive layout */
+@media (max-width: 768px) {
+  .opening-page {
+    flex-direction: column;
+    padding: 2rem;
+    gap: 2rem;
+  }
 
-.rectangle-right {
-  position: absolute;
-  top: 0%;
-  right: 0%;
+  .opening-page.hover-mode .title-wrapper {
+    transform: translateX(-10vw);
+  }
+
+  nav {
+    top: 16px;
+    left: 16px;
+  }
+
+  .opening-footer {
+    bottom: 16px;
+    left: 16px;
+    font-size: 13px;
+  }
+
+  .main-title {
+    font-size: 64px;
+    white-space: normal;
+  }
+
+  .lft-trn,
+  .rgt-trn {
+    width: 100%;
+  }
+
+  .rectangle-left,
+  .rectangle-right {
+    width: 60px;
+  }
 }

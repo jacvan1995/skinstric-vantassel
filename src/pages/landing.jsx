@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import buttonLeft from "../assets/buttonLeft.svg";
 import buttonRight from "../assets/buttonRight.svg";
 import rectangleLeft from "../assets/RectangleLeft.svg";
@@ -5,6 +6,7 @@ import rectangleRight from "../assets/RectangleRight.svg";
 import "../styles/landing.css";
 
 const Landing = () => {
+  const [hoverActive, setHoverActive] = useState(false);
 
   return (
     <section>
@@ -16,23 +18,37 @@ const Landing = () => {
           <button className="btn-blk">ENTER CODE</button>
         </header>
       </nav>
-      <div className="opening-page">
-        <img className="rectangle-left" src={rectangleLeft} />
+
+      <div className={`opening-page ${hoverActive ? "hover-mode" : ""}`}>
+        <img className="rectangle-left" src={rectangleLeft} alt="Left Decoration" />
+
         <button className="lft-trn">
-          <img src={buttonLeft} className="btn-left" />
+          <img src={buttonLeft} className="btn-left" alt="Discover Icon" />
           <span className="btn-txt">DISCOVER A.I.</span>
         </button>
-        <h2 className="main-title">
-          Sophisticated
-          <br />
-          skincare
-        </h2>
-        <button className="rgt-trn">
-          <span className="btn-txt">TAKE TEST</span>
-          <img src={buttonRight} className="btn-right" />
-        </button>
-        <img className="rectangle-right" src={rectangleRight} />
+
+        <div className="title-wrapper">
+          <h2 className="main-title">
+            Sophisticated
+            <br />
+            skincare
+          </h2>
+        </div>
+
+        <div className="rgt-trn-wrapper">
+          <button
+            className="rgt-trn"
+            onMouseEnter={() => setHoverActive(true)}
+            onMouseLeave={() => setHoverActive(false)}
+          >
+            <span className="btn-txt">TAKE TEST</span>
+            <img src={buttonRight} className="btn-right" alt="Test Icon" />
+          </button>
+        </div>
+
+        <img className="rectangle-right" src={rectangleRight} alt="Right Decoration" />
       </div>
+
       <div className="opening-footer">
         Skinstric developed an A.I. that creates
         <br />

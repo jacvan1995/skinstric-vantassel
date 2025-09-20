@@ -4,12 +4,13 @@ import "../styles/analysis-options.css";
 const AnalysisOptions = () => {
   return (
     <section className="analysis-screen">
-      <header>
-        <h1 className="logo">
-          SKINSTRIC <span className="light">[ ANALYSIS ]</span>
-        </h1>
-      </header>
-
+      <nav>
+        <header>
+          <h1 className="logo">
+            SKINSTRIC <span className="light">[ ANALYSIS ]</span>
+          </h1>
+        </header>
+      </nav>
       <div className="analysis-header">
         <h2>A.I. HAS ESTIMATED THE FOLLOWING.</h2>
         <p className="subtext">FIX ESTIMATED INFORMATION IF NEEDED.</p>

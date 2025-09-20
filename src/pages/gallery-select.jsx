@@ -38,12 +38,13 @@ const GallerySelect = () => {
             <img src={GalleryIcon} alt="Gallery" />
           </button>
         </div>
-
+      </div>
+      <footer>
         <button className="back-button">
           <img className="button-left" src={ButtonLeft} alt="Back" />
           BACK
         </button>
-      </div>
+      </footer>
     </section>
   );
 };
