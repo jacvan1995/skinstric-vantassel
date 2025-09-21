@@ -1,12 +1,13 @@
-.introduce-screen {
-  position: relative;
-  min-height: 100vh;
-  padding-bottom: 64px;
-}
+
 
 .input-container {
   display: flex;
   justify-content: center;
+}
+.info-subtext-container {
+  position: absolute;
+  right: 54%;
+  bottom: 50%;
 }
 
 .introduce-content {
@@ -20,8 +21,8 @@
 
 .rombus {
   position: absolute;
-  top: -60px;
-  left: 120px;
+  top: 4%;
+  left: 18%;
   width: 762px;
   height: 762px;
   z-index: 0;
@@ -46,6 +47,9 @@
 }
 
 .intro-input {
+  position: absolute;
+  left: 28%;
+  bottom: 37%;
   width: 420px;
   height: 65px;
   padding: 12px;

@@ -9,9 +9,11 @@ section {
 }
 
 section {
-  width: 960px;
+  width: 1200px;
   margin: 0 auto;
-  padding: 40px 0;
+  padding: 40px 0 ;
+  display: flex;
+  justify-content: space-between;
 }
 
 /* === Analysis Header === */
@@ -47,14 +49,14 @@ section {
   height: 544px;
   max-width: 100%;
   display: flex;
+  justify-content: space-between;
   gap: 40px;
 }
 
 .info-column {
   display: flex;
-  justify-content: space-between;
   flex-direction: column;
-  gap: 20px;
+  gap: 14px;
 }
 
 .info-box {

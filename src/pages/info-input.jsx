@@ -1,7 +1,7 @@
 import React from "react";
 import "../styles/info-input.css";
-import ButtonLeft from "../assets/buttonLeft.svg"
-import Rombuses from "../assets/rombuses.svg"
+import ButtonLeft from "../assets/buttonLeft.svg";
+import Rombuses from "../assets/rombuses.svg";
 
 const InfoInput = () => {
   return (
@@ -13,14 +13,13 @@ const InfoInput = () => {
           </h1>
         </header>
       </nav>
-
-      <div className="header">
-        <h2>TO START ANALYSIS</h2>
-      </div>
+      <span className="sub-header">TO START ANALYSIS</span>
       <div className="input-container">
         <div className="introduce-content">
-            <img className="rombus" src={Rombuses} />
-          <p className="intro-subtext light">CLICK TO TYPE</p>
+          <img className="rombus" src={Rombuses} />
+          <div className="info-subtext-container">
+            <p className="intro-subtext light">CLICK TO TYPE</p>
+          </div>
 
           <input
             type="text"
