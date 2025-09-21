@@ -6,28 +6,52 @@ import "../styles/demographics.css";
 import ButtonLeft from "../assets/buttonLeft.svg";
 
 const Demographics = () => {
-  const selectedInfo = "race"; // toggle between "race" or "age"
+  const [selectedInfoType, setSelectedInfoType] = React.useState("race");
+  const [selectedIndices, setSelectedIndices] = React.useState([]);
 
-  // Generate predictions
   const racePercentages = generateRandomPercentages(raceList.length);
   const agePercentages = generateRandomPercentages(ageList.length);
-  const [selectedIndices, setSelectedIndices] = React.useState([]);
+  const generateRandomSex = () => (Math.random() < 0.5 ? "Male" : "Female");
+  const Sex = generateRandomSex();
 
   const racePrediction =
     raceList[racePercentages.indexOf(Math.max(...racePercentages))];
   const agePrediction =
     ageList[agePercentages.indexOf(Math.max(...agePercentages))];
 
-  const generateRandomSex = () => (Math.random() < 0.5 ? "Male" : "Female");
-  const Sex = generateRandomSex();
+  const activeList =
+    selectedInfoType === "race"
+      ? raceList
+      : selectedInfoType === "age"
+      ? ageList
+      : ["Male", "Female"];
 
-  // Active data for chart + breakdown
-  const activeList = selectedInfo === "race" ? raceList : ageList;
   const activePercentages =
-    selectedInfo === "race" ? racePercentages : agePercentages;
-  const predictedLabel =
-    selectedInfo === "race" ? racePrediction : agePrediction;
+    selectedInfoType === "race"
+      ? racePercentages
+      : selectedInfoType === "age"
+      ? agePercentages
+      : [50, 50];
+
   const maxValue = Math.max(...activePercentages);
+
+  const filteredLabels = selectedIndices.length
+    ? selectedIndices.map((i) => activeList[i])
+    : activeList;
+
+  const filteredPercentages = selectedIndices.length
+    ? selectedIndices.map((i) => activePercentages[i])
+    : activePercentages;
+
+  const pieColors = [
+    "#4caf50",
+    "#f44336",
+    "#2196f3",
+    "#ffeb3b",
+    "#9c27b0",
+    "#00bcd4",
+    "#ff9800",
+  ];
 
   return (
     <section className="demo-page">
@@ -47,57 +71,85 @@ const Demographics = () => {
 
       <div className="info-container">
         <div className="info-column">
-          <div
-            className={`info-box ${selectedInfo === "race" ? "active" : ""}`}
-          >
-            <div className="info-top">{racePrediction}</div>
-            <div className="info-bottom">RACE</div>
-          </div>
-          <div className={`info-box ${selectedInfo === "age" ? "active" : ""}`}>
-            <div className="info-top">{agePrediction}</div>
-            <div className="info-bottom">AGE</div>
-          </div>
-          <div className="info-box">
-            <div className="info-top">{Sex}</div>
-            <div className="info-bottom">SEX</div>
-          </div>
+          {["race", "age", "sex"].map((type) => (
+            <div
+              key={type}
+              className={`info-box ${
+                selectedInfoType === type ? "highlight" : ""
+              }`}
+              onClick={() => setSelectedInfoType(type)}
+            >
+              <div className="info-top">
+                {type === "race"
+                  ? racePrediction
+                  : type === "age"
+                  ? agePrediction
+                  : Sex}
+              </div>
+              <div className="info-bottom">{type.toUpperCase()}</div>
+            </div>
+          ))}
         </div>
 
         <div className="info-graph">
-          <div className="info-display">{`${racePrediction}, ${agePrediction}, ${Sex}`}</div>
-          <PieChart labels={activeList} percentages={activePercentages} />
+          <div className="graph-text">
+            {`${racePrediction}, ${agePrediction}, ${Sex}`}
+            <ul className="graph-legend">
+              {filteredLabels.map((label, i) => (
+                <li key={i} className="legend-item">
+                  <span
+                    className="legend-color"
+                    style={{ backgroundColor: pieColors[i % pieColors.length] }}
+                  ></span>
+                  <span className="legend-label">{label}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="graph-chart">
+            <PieChart
+              labels={filteredLabels}
+              percentages={filteredPercentages}
+            />
+          </div>
         </div>
 
         <div className="info-chart">
           <div className="info-chart-heading">
-            <div>{selectedInfo.toUpperCase()}</div>
+            <div>{selectedInfoType.toUpperCase()}</div>
             <div>A.I. CONFIDENCE</div>
           </div>
-            <div className="info-chart-row">
-              <ul className={`info-list-${selectedInfo}`}>
-                {activeList.map((item, i) => (
-                  <li key={i} className="list-item">
-                    {item}
-                  </li>
-                ))}
-              </ul>
+          <div className="info-chart-row">
+            <ul className="info-paired-list">
+              {activeList.map((label, i) => {
+                const value = activePercentages[i];
+                const isTop = value === maxValue;
+                const isSelected = selectedIndices.includes(i);
 
-              <ul className="percentage-list align-right">
-                {activePercentages.map((value, i) => {
-                  const isTop = value === maxValue;
-                  return (
-                    <li
-                      key={i}
-                      className={`list-item ${isTop ? "selected" : ""}`}
-                    >
-                      {value}%
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
+                return (
+                  <li
+                    key={i}
+                    className={`list-item ${isTop ? "selected" : ""} ${
+                      isSelected ? "highlight" : ""
+                    }`}
+                    onClick={() => {
+                      setSelectedIndices((prev) =>
+                        prev.includes(i)
+                          ? prev.filter((idx) => idx !== i)
+                          : [...prev, i]
+                      );
+                    }}
+                  >
+                    <span className="label">{label}</span>
+                    <span className="value">{value}%</span>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
         </div>
       </div>
+
       <footer>
         <button className="back-button">
           <img className="button-left" src={ButtonLeft} alt="Back" />

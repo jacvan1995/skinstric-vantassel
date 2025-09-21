@@ -1,268 +1,262 @@
-/* === Base Layout === */
-html, body {
+/* ========== Global Layout ========== */
+.demo-page {
   width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  font-family: "Helvetica Neue", sans-serif;
-  background-color: #ffffff;
-  color: #1a1a1a;
-  overflow-x: hidden;
-}
-
-section {
   min-height: 100vh;
-  width: 100vw;
-  padding: 40px 30px;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  position: relative;
+  padding-bottom: 120px;
 }
 
-/* === Analysis Header === */
+/* ========== Header ========== */
 .header {
   text-align: left;
-  margin-bottom: 40px;
-  padding-top: 52px;
-  font-weight: 400;
-  font-size: 72px;
+  margin: 40px 0;
+  padding-left: 2%;
+  padding-top: 2%;
+  padding-bottom: 5%;
+}
+
+.logo {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.light {
+  font-weight: normal;
+  color: #888;
 }
 
 .header-orbital {
-  font-size: 16px;
-  font-weight: 600;
-  letter-spacing: 2px;
-  color: #999;
-  text-transform: uppercase;
-  margin-bottom: 8px;
+  font-size: 24px;
+  color: #242424;
 }
 
 .header-main {
-  font-size: 72px;
-  font-weight: 400;
-  margin: 0;
+  font-size: 36px;
+  margin: 8px 0;
 }
 
 .header-sub {
-  font-size: 14px;
-  font-weight: 400;
+  font-size: 18px;
   color: #666;
-  margin-top: 8px;
 }
 
-/* === Info Boxes === */
+/* ========== Main Layout ========== */
 .info-container {
-  width: 100%;
-  max-width: none;
-  margin: 0 auto;
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   gap: 40px;
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 32px;
   box-sizing: border-box;
-  flex: 1;
-  overflow-y: auto;
-  padding-bottom: 100px;
 }
 
+/* ========== Info Column (Left) ========== */
 .info-column {
+  flex: 0 0 240px;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 24px;
 }
 
 .info-box {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 208px;
-  height: 104px;
-  padding: 12px;
-  background-color: #f2f2f2;
-  border: 1px solid #ccc;
+  background: #f3f3f4;
+  border: 2px solid transparent;
+  padding: 16px;
   text-align: center;
-  font-size: 14px;
-  font-weight: 600;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.info-box.highlight {
+  border-color: #555;
+  background-color: #000;
+  font-weight: bold;
+  color: #fff;
 }
 
 .info-top {
-  font-size: 14px;
-  font-weight: 700;
-  margin-bottom: auto;
+  font-size: 24px;
+  margin-bottom: 8px;
 }
 
 .info-bottom {
   font-size: 14px;
-  font-weight: 700;
-  color: #666;
-  margin-top: auto;
+  color: #000;
 }
 
-/* === Graph Section === */
+.info-bottom.highlight {
+  color: #fff;
+}
+
+/* ========== Graph Section (Center) ========== */
+.graph-legend {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: #000;
+}
+
+.legend-color {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  margin-right: 8px;
+}
+
 .info-graph {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  justify-content: center;
-  width: 100%;
+  justify-content: space-between;
+  background-color: #f3f3f4;
+  padding: 24px;
   gap: 40px;
 }
 
+.graph-text {
+  font-size: 18px;
+  font-weight: bold;
+  color: #000;
+  max-width: 300px;
+  flex: 0 0 auto;
+}
+
+.graph-chart {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  transform: scale(1);
+  transform-origin: top center;
+}
+
 .info-display {
-  font-size: 40px;
-  font-weight: 400;
-  margin-bottom: 24px;
+  font-size: 18px;
+  font-weight: bold;
 }
 
-/* === Pie Chart === */
-.pie-chart-container {
-  max-width: 320px;
-  width: 100%;
-}
-
-/* === Confidence Breakdown === */
+/* ========== Chart Section (Right) ========== */
 .info-chart {
-  background-color: #f2f2f2;
-  border: 1px solid #ccc;
-  padding: 24px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  flex: 1;
 }
 
 .info-chart-heading {
   display: flex;
   justify-content: space-between;
-  font-weight: 700;
   font-size: 16px;
   margin-bottom: 16px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  width: 448px;
 }
 
-.info-chart-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 40px;
-}
-
-/* === Lists === */
-.info-list-race,
-.info-list-age,
-.percentage-list {
+/* ========== Unified Label + Percentage List ========== */
+.info-paired-list {
   list-style: none;
   padding: 0;
   margin: 0;
+  width: 448px;
+  height: 544px;
+  background-color: #f3f3f4;
+}
+
+.info-paired-list .list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 16px;
+  font-size: 16px;
+  line-height: 1.6;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.info-paired-list .label {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #000;
+}
+
+.info-paired-list .value {
+  flex-shrink: 0;
+  padding-left: 16px;
+  color: #000;
+}
+
+.info-paired-list .list-item.selected {
+  color: #242424;
+}
+
+.info-paired-list .list-item.highlight {
+  background-color: #000;
+  border-left: 4px solid #555;
+  color: #fff;
+}
+
+.info-paired-list .list-item.highlight .label,
+.info-paired-list .list-item.highlight .value {
+  color: #fff;
+}
+
+/* ========== Legacy List Styles (if still used elsewhere) ========== */
+.info-list-race,
+.info-list-age {
+  width: 448px;
 }
 
 .percentage-list {
   width: 448px;
   height: 544px;
-}
-
-.percentage-list .list-item {
-  display: flex;
-  justify-content: flex-end; 
-  width: 100%;               
-  padding-right: 16px;       
-  box-sizing: border-box;
-}
-
-.info-list-race .list-item,
-.info-list-age .list-item {
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  width: 100%;
-  box-sizing: border-box;
-  font-size: 16px;
-  padding-left: 24px;
-  position: relative;
-}
-
-.info-list-race .list-item::before,
-.info-list-age .list-item::before {
-  content: "◇";
-  position: absolute;
-  left: 0;
-  color: #242424;
-  font-size: 16px;
-  line-height: 1;
-  transition: color 0.2s ease;
-}
-
-.info-list-race .list-item.selected::before,
-.info-list-age .list-item.selected::before {
-  content: "◆";
-}
-
-.list-item:hover::before {
-  color: #555555;
-}
-
-.list-item.selected::before {
-  transition: color 0.3s ease, content 0.3s ease;
-}
-
-.align-left {
-  text-align: left;
-}
-
-.align-right {
-  text-align: right;
+  background-color: #f3f3f4;
 }
 
 .list-item {
-  padding: 8px 0;
-  font-size: 14px;
-}
-
-/* === Highlighting === */
-.list-item.highlight {
-  font-weight: bold;
-  color: #2196f3;
-}
-
-/* === Buttons === */
-.button-row {
-  display: flex;
-  justify-content: center;
-  gap: 24px;
-  margin-top: 48px;
-}
-
-.button-row button {
-  padding: 12px 32px;
+  padding: 8px 16px;
   font-size: 16px;
-  border: none;
-  background-color: #1a1a1a;
-  color: #fff;
+  line-height: 1.6;
+  white-space: nowrap;
   cursor: pointer;
-  border-radius: 4px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
 }
 
-.button-row button:hover {
-  background-color: #333;
+.list-item.selected {
+  color: #242424;
 }
 
-.pie-chart-container {
-  max-width: 320px;
-  margin: 0 auto;
+.list-item.highlight {
+  background-color: #000;
+  border-left: 4px solid #555;
+  color: #fff;
 }
 
+/* ========== Footer ========== */
 .footer-btn-group {
   position: absolute;
-  right: 2%;
   bottom: 2%;
+  right: 2%;
+  display: flex;
+  gap: 16px;
 }
 
-.con-btn {
-  color: #fff;
-  background-color: #242424;
-  width: 95px;
-  height: 35px;
-  cursor: pointer;
+.back-button {
+  position: absolute;
+  bottom: 2%;
+  left: 2%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .res-btn {
@@ -270,7 +264,50 @@ section {
   width: 73px;
 }
 
+.con-btn {
+  background-color: #000;
+  color: #fff;
+  height: 35px;
+  width: 95px;
+}
+
 .graph-txt {
   text-align: center;
-  color: #555;
+  margin-top: 16px;
+  font-size: 14px;
+  color: #666;
+}
+
+/* ========== Responsive Fallback ========== */
+@media (max-width: 768px) {
+  .info-graph {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .graph-text {
+    text-align: center;
+    margin-bottom: 16px;
+  }
+
+  .graph-chart {
+    justify-content: center;
+  }
+
+  .info-container {
+    flex-direction: column;
+  }
+
+  .info-column,
+  .info-graph,
+  .info-chart {
+    width: 100%;
+  }
+
+  .footer-btn-group,
+  .back-button {
+    position: static;
+    margin-top: 32px;
+    justify-content: center;
+  }
 }
