@@ -78,3 +78,25 @@ font-weight: 700;
   color: #555;
   cursor: pointer;
 }
+
+.proceed-button {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  bottom: 2%;
+  right: 2%;
+  padding: 12px 20px;
+  font-size: 14px;
+  gap: 8px;
+  background-color: transparent;
+  color: #000;
+  border: none;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 3s ease;
+  z-index: 10;
+}
+
+.fade-in {
+  opacity: 1;
+}

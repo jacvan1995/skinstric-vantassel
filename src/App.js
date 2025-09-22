@@ -4,7 +4,7 @@ import React from "react";
 import Landing from "./pages/landing";
 import Demograpics from "./pages/demographics";
 import GallerySelect from "./pages/gallery-select";
-import InfoInput from "./pages/info-input-name";
+import InfoInput from "./pages/info-input";
 import AnalysisOptions from "./pages/analysis-options";
 
 function App() {
