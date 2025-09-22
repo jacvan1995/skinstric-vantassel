@@ -72,7 +72,8 @@
   transition: all 0.2s ease;
 }
 
-.info-box.highlight {
+.info-box.highlight,
+.info-box.highlight .info-bottom {
   border-color: #555;
   background-color: #000;
   font-weight: bold;
@@ -87,10 +88,6 @@
 .info-bottom {
   font-size: 14px;
   color: #000;
-}
-
-.info-bottom.highlight {
-  color: #fff;
 }
 
 /* ========== Graph Section (Center) ========== */
@@ -160,6 +157,7 @@
   font-size: 16px;
   margin-bottom: 16px;
   width: 448px;
+  background-color: #f3f3f4;
 }
 
 /* ========== Unified Label + Percentage List ========== */
@@ -229,6 +227,18 @@
   line-height: 1.6;
   white-space: nowrap;
   cursor: pointer;
+}
+
+.list-item::before {
+  content: "◇";
+  margin-right: 8px;
+  font-size: 14px;
+  color: #000;
+}
+
+.list-item.selected::before {
+  content: "◆";
+  color: #000;
 }
 
 .list-item.selected {

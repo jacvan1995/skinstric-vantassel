@@ -129,7 +129,7 @@ const Demographics = () => {
                 return (
                   <li
                     key={i}
-                    className={`list-item ${isTop ? "selected" : ""} ${
+                    className={`list-item ${isTop || isSelected ? "selected" : ""} ${
                       isSelected ? "highlight" : ""
                     }`}
                     onClick={() => {
