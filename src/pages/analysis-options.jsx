@@ -1,5 +1,9 @@
 import React from "react";
 import "../styles/analysis-options.css";
+import LocationSelector from "../components/ui/category-selector";
+import ButtonLeft from "../assets/buttonLeft.svg";
+import ButtonRight from "../assets/buttonRight.svg"
+import BackgroundImg from "../assets/rombuses.svg"
 
 const AnalysisOptions = () => {
   return (
@@ -11,22 +15,26 @@ const AnalysisOptions = () => {
           </h1>
         </header>
       </nav>
-      <div className="analysis-header">
+      <img className="background-img" src={BackgroundImg} />
+      <div className="header-container">
+        <h3>A.I. ANALYSIS</h3>
         <h2>A.I. HAS ESTIMATED THE FOLLOWING.</h2>
         <p className="subtext">FIX ESTIMATED INFORMATION IF NEEDED.</p>
       </div>
-
       <div className="button-grid">
-        <button className="grid-button">DEMOGRAPHICS</button>
-        <button className="grid-button">SKIN TYPE</button>
-        <button className="grid-button">DETAILS</button>
-        <button className="grid-button">WEATHER</button>
+        <LocationSelector />
       </div>
 
-      <div className="footer-actions">
-        <button className="back-button">BACK</button>
-        <button className="summary-button">GET SUMMARY</button>
-      </div>
+      <footer>
+        <button className="back-button">
+          <img src={ButtonLeft} />
+          BACK
+        </button>
+        <button className="summary-button">
+          GET SUMMARY
+          <img src={ButtonRight} />
+        </button>
+      </footer>
     </section>
   );
 };

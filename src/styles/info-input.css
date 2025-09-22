@@ -1,4 +1,9 @@
-
+.sub-header {
+position: absolute;
+top: 8%;
+left: 2%;
+font-weight: 700;
+}
 
 .input-container {
   display: flex;
@@ -21,8 +26,8 @@
 
 .rombus {
   position: absolute;
-  top: 4%;
-  left: 18%;
+  top: 10%;
+  left: 30%;
   width: 762px;
   height: 762px;
   z-index: 0;
@@ -48,8 +53,8 @@
 
 .intro-input {
   position: absolute;
-  left: 28%;
-  bottom: 37%;
+  left: 38%;
+  bottom: 48%;
   width: 420px;
   height: 65px;
   padding: 12px;

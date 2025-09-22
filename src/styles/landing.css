@@ -70,7 +70,7 @@ section {
 }
 
 .opening-page.hover-mode .title-wrapper {
-  transform: translateX(-20vw);
+  transform: translateX(-10vw);
   justify-content: flex-start;
 }
 
@@ -91,7 +91,8 @@ section {
   opacity: 0.95;
 }
 
-.opening-page.hover-mode .lft-trn {
+.opening-page.hover-mode .lft-trn,
+.opening-page.hover-mode .rectangle-left {
   opacity: 0;
   pointer-events: none;
 }
@@ -112,7 +113,7 @@ section {
   position: relative;
 }
 
-.lft-trn {
+.lft-trn .rectangle-left {
   transition: opacity 0.5s ease;
 }
 
@@ -131,17 +132,16 @@ section {
 .rectangle-left,
 .rectangle-right {
   position: absolute;
-  top: 0;
-  width: 100px;
-  height: auto;
+  width: 602px;
+  height: 602px;
 }
 
 .rectangle-left {
-  left: 0;
+  left: -8%;
 }
 
 .rectangle-right {
-  right: 0;
+  right: -8%;
 }
 
 /* Footer */

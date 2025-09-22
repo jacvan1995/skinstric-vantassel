@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import buttonLeft from "../assets/buttonLeft.svg";
 import buttonRight from "../assets/buttonRight.svg";
-import rectangleLeft from "../assets/RectangleLeft.svg";
-import rectangleRight from "../assets/RectangleRight.svg";
+import RectangleLeft from "../assets/RectangleLeft.svg";
+import RectangleRight from "../assets/RectangleRight.svg";
 import "../styles/landing.css";
 
 const Landing = () => {
@@ -20,7 +20,7 @@ const Landing = () => {
       </nav>
 
       <div className={`opening-page ${hoverActive ? "hover-mode" : ""}`}>
-        <img className="rectangle-left" src={rectangleLeft} alt="Left Decoration" />
+        <img className="rectangle-left" src={RectangleLeft} alt="Left Decoration" />
 
         <button className="lft-trn">
           <img src={buttonLeft} className="btn-left" alt="Discover Icon" />
@@ -46,7 +46,7 @@ const Landing = () => {
           </button>
         </div>
 
-        <img className="rectangle-right" src={rectangleRight} alt="Right Decoration" />
+        <img className="rectangle-right" src={RectangleRight} alt="Right Decoration" />
       </div>
 
       <div className="opening-footer">

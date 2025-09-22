@@ -3,7 +3,7 @@ import "../styles/info-input.css";
 import ButtonLeft from "../assets/buttonLeft.svg";
 import Rombuses from "../assets/rombuses.svg";
 
-const InfoInput = () => {
+const InfoInputLoc = () => {
   return (
     <section className="introduce-screen">
       <nav>
@@ -14,6 +14,7 @@ const InfoInput = () => {
         </header>
       </nav>
       <span className="sub-header">TO START ANALYSIS</span>
+
       <div className="input-container">
         <div className="introduce-content">
           <img className="rombus" src={Rombuses} />
@@ -24,7 +25,7 @@ const InfoInput = () => {
           <input
             type="text"
             className="intro-input"
-            placeholder="Introduce Yourself"
+            placeholder="Where are you from?"
           />
         </div>
       </div>
@@ -36,4 +37,4 @@ const InfoInput = () => {
   );
 };
 
-export default InfoInput;
+export default InfoInputLoc;

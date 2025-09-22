@@ -1,0 +1,85 @@
+.diamond-wrapper {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.diamond-grid {
+  position: relative;
+  width: 315px;
+  height: 315px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.category-button {
+  position: absolute;
+  width: 154px;
+  height: 154px;
+  background-color: #f3f3f4;
+  border: 2px solid #ccc;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-origin: center;
+}
+
+.category-button:hover {
+  background-color: #888;
+}
+
+.category-button.disabled:hover {
+  background-color: #eee;
+  border-color: #aaa;
+  cursor: not-allowed;
+}
+
+.inactive-icon {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  font-size: 18px;
+  pointer-events: none;
+}
+
+.button-label {
+  transform: rotate(-45deg);
+  white-space: nowrap;
+}
+
+/* Position all buttons at center first */
+.pos-0,
+.pos-1,
+.pos-2,
+.pos-3 {
+  top: 50%;
+  left: 50%;
+}
+
+/* Then push each one outward and rotate */
+.pos-0 {
+  transform: translate(-50%, -123%) rotate(45deg); /* Top */
+}
+
+.pos-1 {
+  transform: translate(-123%, -50%) rotate(45deg); /* Left */
+}
+
+.pos-2 {
+  transform: translate(23%, -50%) rotate(45deg); /* Right */
+}
+
+.pos-3 {
+  transform: translate(-50%, 23%) rotate(45deg); /* Bottom */
+}
