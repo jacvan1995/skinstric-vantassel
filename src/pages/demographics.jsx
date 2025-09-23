@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { raceList, ageList } from "../components/info-list";
 import { generateRandomPercentages } from "../components/info-perc";
 import PieChart from "../components/pie-chart";
@@ -6,18 +6,20 @@ import "../styles/demographics.css";
 import ButtonLeft from "../assets/buttonLeft.svg";
 
 const Demographics = () => {
-  const [selectedInfoType, setSelectedInfoType] = React.useState("race");
-  const [selectedIndices, setSelectedIndices] = React.useState([]);
+  const [selectedInfoType, setSelectedInfoType] = useState("race");
+  const [selectedIndices, setSelectedIndices] = useState([]);
 
-  const racePercentages = generateRandomPercentages(raceList.length);
-  const agePercentages = generateRandomPercentages(ageList.length);
-  const generateRandomSex = () => (Math.random() < 0.5 ? "Male" : "Female");
-  const Sex = generateRandomSex();
+  // Freeze predictions on initial render
+  const racePercentagesRef = useRef(generateRandomPercentages(raceList.length));
+  const agePercentagesRef = useRef(generateRandomPercentages(ageList.length));
+  const sexRef = useRef(Math.random() < 0.5 ? "Male" : "Female");
 
-  const racePrediction =
-    raceList[racePercentages.indexOf(Math.max(...racePercentages))];
-  const agePrediction =
-    ageList[agePercentages.indexOf(Math.max(...agePercentages))];
+  const racePredictionRef = useRef(
+    raceList[racePercentagesRef.current.indexOf(Math.max(...racePercentagesRef.current))]
+  );
+  const agePredictionRef = useRef(
+    ageList[agePercentagesRef.current.indexOf(Math.max(...agePercentagesRef.current))]
+  );
 
   const activeList =
     selectedInfoType === "race"
@@ -28,9 +30,9 @@ const Demographics = () => {
 
   const activePercentages =
     selectedInfoType === "race"
-      ? racePercentages
+      ? racePercentagesRef.current
       : selectedInfoType === "age"
-      ? agePercentages
+      ? agePercentagesRef.current
       : [50, 50];
 
   const maxValue = Math.max(...activePercentages);
@@ -55,7 +57,6 @@ const Demographics = () => {
 
   return (
     <main className="skinstric-wrapper">
-
       <div className="header">
         <h2 className="header-orbital">A.I. ANALYSIS</h2>
         <h3 className="header-main">DEMOGRAPHICS</h3>
@@ -67,17 +68,15 @@ const Demographics = () => {
           {["race", "age", "sex"].map((type) => (
             <div
               key={type}
-              className={`info-box ${
-                selectedInfoType === type ? "highlight" : ""
-              }`}
+              className={`info-box ${selectedInfoType === type ? "highlight" : ""}`}
               onClick={() => setSelectedInfoType(type)}
             >
               <div className="info-top">
                 {type === "race"
-                  ? racePrediction
+                  ? racePredictionRef.current
                   : type === "age"
-                  ? agePrediction
-                  : Sex}
+                  ? agePredictionRef.current
+                  : sexRef.current}
               </div>
               <div className="info-bottom">{type.toUpperCase()}</div>
             </div>
@@ -86,7 +85,7 @@ const Demographics = () => {
 
         <div className="info-graph">
           <div className="graph-text">
-            {`${racePrediction}, ${agePrediction}, ${Sex}`}
+            {`${racePredictionRef.current}, ${agePredictionRef.current}, ${sexRef.current}`}
             <ul className="graph-legend">
               {filteredLabels.map((label, i) => (
                 <li key={i} className="legend-item">
@@ -100,10 +99,7 @@ const Demographics = () => {
             </ul>
           </div>
           <div className="graph-chart">
-            <PieChart
-              labels={filteredLabels}
-              percentages={filteredPercentages}
-            />
+            <PieChart labels={filteredLabels} percentages={filteredPercentages} />
           </div>
         </div>
 
@@ -116,7 +112,6 @@ const Demographics = () => {
             <ul className="info-paired-list">
               {activeList.map((label, i) => {
                 const value = activePercentages[i];
-                const isTop = value === maxValue;
                 const isSelected = selectedIndices.includes(i);
 
                 return (
