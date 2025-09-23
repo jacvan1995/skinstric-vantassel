@@ -229,20 +229,20 @@
   cursor: pointer;
 }
 
-.list-item::before {
+.info-paired-list .list-item::before {
   content: "◇";
   margin-right: 8px;
   font-size: 14px;
   color: #000;
 }
 
-.list-item.selected::before {
+.info-paired-list .list-item.selected::before {
   content: "◆";
   color: #000;
 }
 
-.list-item.selected {
-  color: #242424;
+.info-paired-list .list-item.highlight::before {
+  color: #fff;
 }
 
 .list-item.highlight {

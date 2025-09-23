@@ -5,22 +5,18 @@ import RectangleLeft from "../assets/RectangleLeft.svg";
 import RectangleRight from "../assets/RectangleRight.svg";
 import "../styles/landing.css";
 
-const Landing = () => {
+const Landing = ({ onNext }) => {
   const [hoverActive, setHoverActive] = useState(false);
 
   return (
-    <section>
-      <nav>
-        <header>
-          <h1 className="logo">
-            SKINSTRIC <span className="light">[ INTRO ]</span>
-          </h1>
-          <button className="btn-blk">ENTER CODE</button>
-        </header>
-      </nav>
+    <section className="stage-inner">
 
       <div className={`opening-page ${hoverActive ? "hover-mode" : ""}`}>
-        <img className="rectangle-left" src={RectangleLeft} alt="Left Decoration" />
+        <img
+          className="rectangle-left"
+          src={RectangleLeft}
+          alt="Left Decoration"
+        />
 
         <button className="lft-trn">
           <img src={buttonLeft} className="btn-left" alt="Discover Icon" />
@@ -40,13 +36,18 @@ const Landing = () => {
             className="rgt-trn"
             onMouseEnter={() => setHoverActive(true)}
             onMouseLeave={() => setHoverActive(false)}
+            onClick={onNext}
           >
             <span className="btn-txt">TAKE TEST</span>
             <img src={buttonRight} className="btn-right" alt="Test Icon" />
           </button>
         </div>
 
-        <img className="rectangle-right" src={RectangleRight} alt="Right Decoration" />
+        <img
+          className="rectangle-right"
+          src={RectangleRight}
+          alt="Right Decoration"
+        />
       </div>
 
       <div className="opening-footer">

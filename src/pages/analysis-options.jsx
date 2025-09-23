@@ -8,13 +8,7 @@ import BackgroundImg from "../assets/rombuses.svg"
 const AnalysisOptions = () => {
   return (
     <section className="analysis-screen">
-      <nav>
-        <header>
-          <h1 className="logo">
-            SKINSTRIC <span className="light">[ ANALYSIS ]</span>
-          </h1>
-        </header>
-      </nav>
+      
       <img className="background-img" src={BackgroundImg} />
       <div className="header-container">
         <h3>A.I. ANALYSIS</h3>

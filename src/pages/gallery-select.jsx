@@ -14,13 +14,6 @@ const GallerySelect = () => {
 
   return (
     <section className="intro-screen">
-      <nav>
-        <header>
-          <h1 className="logo">
-            SKINSTRIC <span className="light">[ ANALYSIS ]</span>
-          </h1>
-        </header>
-      </nav>
 
       <div className="header">
         <h2>TO START ANALYSIS</h2>

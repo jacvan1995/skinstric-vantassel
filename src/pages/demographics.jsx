@@ -54,14 +54,7 @@ const Demographics = () => {
   ];
 
   return (
-    <section className="demo-page">
-      <nav>
-        <header>
-          <h1 className="logo">
-            SKINSTRIC <span className="light">[ ANALYSIS ]</span>
-          </h1>
-        </header>
-      </nav>
+    <main className="skinstric-wrapper">
 
       <div className="header">
         <h2 className="header-orbital">A.I. ANALYSIS</h2>
@@ -129,9 +122,7 @@ const Demographics = () => {
                 return (
                   <li
                     key={i}
-                    className={`list-item ${isTop || isSelected ? "selected" : ""} ${
-                      isSelected ? "highlight" : ""
-                    }`}
+                    className={`list-item ${isSelected ? "selected highlight" : ""}`}
                     onClick={() => {
                       setSelectedIndices((prev) =>
                         prev.includes(i)
@@ -163,7 +154,7 @@ const Demographics = () => {
           <button className="con-btn">CONFIRM</button>
         </div>
       </footer>
-    </section>
+    </main>
   );
 };
 

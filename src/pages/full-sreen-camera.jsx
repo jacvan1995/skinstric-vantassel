@@ -113,14 +113,6 @@ const FullscreenCamera = () => {
 
         <canvas ref={canvasRef} style={{ display: "none" }} />
 
-        <nav className="camera-nav">
-          <header>
-            <h1 className="logo camera-active">
-              SKINSTRIC <span className="light">[ ANALYSIS ]</span>
-            </h1>
-          </header>
-        </nav>
-
         {!capturedImage && (
           <div
             className={`overlay-text ${

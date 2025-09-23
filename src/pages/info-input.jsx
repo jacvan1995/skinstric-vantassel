@@ -33,13 +33,6 @@ const InfoInputFlow = () => {
 
   return (
     <section className="introduce-screen">
-      <nav>
-        <header>
-          <h1 className="logo">
-            SKINSTRIC <span className="light">[ ANALYSIS ]</span>
-          </h1>
-        </header>
-      </nav>
 
       <span className="sub-header">TO START ANALYSIS</span>
 
