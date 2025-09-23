@@ -52,17 +52,6 @@
   left: 32px;
 }
 
-.logo {
-  font-size: 14px;
-  font-weight: bold;
-  color: #242424;
-}
-
-.light {
-  font-weight: 300;
-  color: #ccc;
-}
-
 .overlay-text {
   position: absolute;
   bottom: 32px;
@@ -150,6 +139,7 @@
   color: white;
   text-align: center;
   z-index: 10003;
+  pointer-events: auto;
 }
 
 

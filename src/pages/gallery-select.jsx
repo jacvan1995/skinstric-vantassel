@@ -5,7 +5,7 @@ import GalleryIcon from "../assets/gallery.svg";
 import ButtonLeft from "../assets/buttonLeft.svg";
 import FullScreenCamera from "./full-sreen-camera";
 
-const GallerySelect = () => {
+const GallerySelect = ({ onNext }) => {
   const [cameraActive, setCameraActive] = useState(false);
 
   const handleCameraAccess = () => {
@@ -13,7 +13,7 @@ const GallerySelect = () => {
   };
 
   return (
-    <section className="intro-screen">
+    <section className="stage-inner">
 
       <div className="header">
         <h2>TO START ANALYSIS</h2>
@@ -25,7 +25,7 @@ const GallerySelect = () => {
             <img src={CameraIcon} alt="Camera" />
           </button>
 
-          {cameraActive && <FullScreenCamera />}
+          {cameraActive && <FullScreenCamera onConfirm={onNext} />}
 
           <button className="intro-button">
             <img src={GalleryIcon} alt="Gallery" />

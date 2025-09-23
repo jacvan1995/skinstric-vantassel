@@ -5,7 +5,7 @@ import ButtonLeft from "../assets/buttonLeft.svg";
 import ButtonRight from "../assets/buttonRight.svg"
 import BackgroundImg from "../assets/rombuses.svg"
 
-const AnalysisOptions = () => {
+const AnalysisOptions = ({ onNext }) => {
   return (
     <section className="analysis-screen">
       
@@ -16,7 +16,7 @@ const AnalysisOptions = () => {
         <p className="subtext">FIX ESTIMATED INFORMATION IF NEEDED.</p>
       </div>
       <div className="button-grid">
-        <LocationSelector />
+        <LocationSelector onConfirm={onNext} />
       </div>
 
       <footer>

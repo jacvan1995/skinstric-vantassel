@@ -4,12 +4,46 @@ import "../styles/full-screen.css";
 import CameraIcon from "../assets/camera-round.svg";
 import CameraLoading from "../assets/camera_loading.svg";
 
-const FullscreenCamera = () => {
+const FullscreenCamera = ({ onConfirm }) => {
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
   const [capturedImage, setCapturedImage] = useState(null);
   const [showPrompt, setShowPrompt] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  useEffect(() => {
+    console.log("✅ onConfirm received:", typeof onConfirm);
+  }, [onConfirm]);
+
+  const submitPhaseTwoImage = async (base64Image) => {
+    try {
+      const response = await fetch(
+        "https://us-central1-frontend-simplified.cloudfunctions.net/skinstricPhaseTwo",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ image: base64Image }),
+        }
+      );
+      const data = await response.json();
+      console.log("✅ Phase Two response:", data);
+      return data;
+    } catch (error) {
+      console.error("❌ Phase Two error:", error);
+      return null;
+    }
+  };
+
+  const handleConfirm = async () => {
+    setIsSubmitting(true);
+    const base64Payload = capturedImage.split(",")[1];
+    const result = await submitPhaseTwoImage(base64Payload);
+    if (result && onConfirm) onConfirm();
+    setIsSubmitting(false);
+  };
 
   const handleCapture = () => {
     const video = videoRef.current;
@@ -99,7 +133,9 @@ const FullscreenCamera = () => {
         {capturedImage && showPrompt && (
           <div className="use-picture-prompt">
             <p>Use this picture?</p>
-            <button onClick={() => console.log("Confirmed")}>Yes</button>
+            <button onClick={handleConfirm} disabled={isSubmitting}>
+              {isSubmitting ? "Submitting..." : "Yes"}
+            </button>
             <button
               onClick={() => {
                 setCapturedImage(null);

@@ -8,11 +8,11 @@ const categories = [
   { label: "Skin Type Details", active: false }
 ];
 
-const CategorySelector = () => {
+const CategorySelector = ({ onConfirm }) => {
   const onSelect = (category) => {
     if (category === "Demographics") {
       console.log("Navigating to Demographics");
-      // Add navigation or state logic here
+      if (onConfirm) onConfirm();
     } else {
       console.log(`${category} is inactive`);
     }

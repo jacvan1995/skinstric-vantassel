@@ -78,7 +78,7 @@ const App = () => {
             <AnalysisOptions
               analysisType={analysisType}
               setAnalysisType={setAnalysisType}
-              onDemographics={() => setStage("demographics")}
+              onNext={() => setStage("demographics")}
             />
           )}
 
