@@ -320,3 +320,95 @@
     justify-content: center;
   }
 }
+
+/* Medium devices (tablets, landscape phones) */
+@media (max-width: 1024px) {
+  .info-container {
+    flex-direction: column;
+    padding: 0 24px;
+  }
+
+  .info-column {
+    flex: 0 0 auto;
+    width: 100%;
+    align-items: center;
+  }
+
+  .info-box {
+    width: 80%;
+    max-width: 300px;
+  }
+
+  .info-chart-heading,
+  .info-paired-list,
+  .info-list-race,
+  .info-list-age,
+  .percentage-list {
+    width: 100%;
+    max-width: 448px;
+    margin: 0 auto;
+  }
+
+  .graph-chart {
+    height: auto;
+    max-height: 400px;
+  }
+
+  .footer-btn-group,
+  .back-button {
+    position: static;
+    justify-content: center;
+    margin-top: 24px;
+  }
+
+  .graph-txt {
+    position: static;
+    margin-top: 24px;
+    text-align: center;
+  }
+}
+
+/* Large devices (small laptops) */
+@media (max-width: 1280px) {
+  .info-container {
+    padding: 0 48px;
+  }
+
+  .info-box {
+    width: 220px;
+  }
+
+  .graph-chart {
+    height: 480px;
+  }
+
+  .info-paired-list {
+    height: auto;
+    max-height: 480px;
+    overflow-y: auto;
+  }
+}
+
+/* Extra large screens (desktops, ultra-wide) */
+@media (min-width: 1600px) {
+  .info-container {
+    max-width: 1400px;
+  }
+
+  .graph-chart {
+    transform: scale(1.1);
+  }
+
+  .info-box {
+    width: 260px;
+    height: 120px;
+  }
+
+  .info-top {
+    font-size: 28px;
+  }
+
+  .info-bottom {
+    font-size: 16px;
+  }
+}

@@ -179,3 +179,91 @@ main {
     width: 60px;
   }
 }
+
+/* Medium devices (tablets) */
+@media (max-width: 1024px) {
+  .opening-page {
+    flex-direction: column;
+    padding: 2.5rem;
+    gap: 2.5rem;
+  }
+
+  .main-title {
+    font-size: clamp(40px, 8vw, 96px);
+    white-space: normal;
+    text-align: center;
+  }
+
+  .rectangle-left,
+  .rectangle-right {
+    width: 300px;
+    height: 300px;
+  }
+
+  .lft-trn,
+  .rgt-trn {
+    min-width: 120px;
+    height: 40px;
+    font-size: 14px;
+  }
+
+  .opening-footer {
+    font-size: 13px;
+    padding: 8px;
+    left: 24px;
+    bottom: 24px;
+  }
+}
+
+/* Large devices (small laptops) */
+@media (max-width: 1280px) {
+  .opening-page {
+    padding: 3rem;
+    gap: 2rem;
+  }
+
+  .main-title {
+    font-size: clamp(48px, 9vw, 112px);
+  }
+
+  .rectangle-left,
+  .rectangle-right {
+    width: 400px;
+    height: 400px;
+  }
+
+  .lft-trn,
+  .rgt-trn {
+    min-width: 140px;
+    height: 42px;
+  }
+}
+
+/* Extra large screens (ultra-wide monitors) */
+@media (min-width: 1600px) {
+  .opening-page {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .main-title {
+    font-size: clamp(64px, 10vw, 144px);
+  }
+
+  .rectangle-left,
+  .rectangle-right {
+    width: 700px;
+    height: 700px;
+  }
+
+  .lft-trn,
+  .rgt-trn {
+    min-width: 160px;
+    height: 48px;
+    font-size: 16px;
+  }
+
+  .opening-footer {
+    font-size: 15px;
+  }
+}

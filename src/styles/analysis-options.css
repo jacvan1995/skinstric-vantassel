@@ -50,3 +50,74 @@ h3 {
   position: absolute;
   top: 11%;
 }
+
+/* Small devices (phones) */
+@media (max-width: 480px) {
+  .analysis-screen {
+    padding: 24px;
+  }
+
+  .header-container {
+    top: 4%;
+    left: 4%;
+    font-size: 0.9rem;
+  }
+
+  .subtext {
+    font-size: 14px;
+  }
+
+  .summary-button {
+    bottom: 4%;
+    right: 4%;
+    font-size: 12px;
+  }
+
+  .background-img {
+    top: 14%;
+    width: 80vw;
+  }
+}
+
+/* Medium devices (tablets) */
+@media (max-width: 768px) {
+  .analysis-screen {
+    padding: 32px;
+  }
+
+  .header-container {
+    top: 6%;
+    left: 3%;
+  }
+
+  .subtext {
+    font-size: 15px;
+  }
+
+  .summary-button {
+    bottom: 3%;
+    right: 3%;
+  }
+
+  .background-img {
+    top: 12%;
+    width: 60vw;
+  }
+}
+
+/* Large devices (small laptops) */
+@media (max-width: 1024px) {
+  .analysis-screen {
+    padding: 40px;
+  }
+
+  .header-container {
+    top: 7%;
+    left: 2%;
+  }
+
+  .background-img {
+    top: 11%;
+    width: 50vw;
+  }
+}

@@ -66,3 +66,72 @@ h2 {
 .button-left {
   transform: scale(75%);
 }
+
+/* Extra small devices (phones) */
+@media (max-width: 480px) {
+  .intro-content {
+    margin-top: 32px;
+    padding: 0 16px;
+  }
+
+  .intro-heading {
+    font-size: 12px;
+    margin-bottom: 12px;
+  }
+
+  .intro-subtext {
+    font-size: 16px;
+    margin: 6px 0;
+  }
+
+  .intro-actions {
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+    margin-top: 24px;
+  }
+
+  .intro-button {
+    width: 90vw;
+    height: auto;
+    padding: 16px;
+    font-size: 14px;
+  }
+
+  .back-button {
+    margin-top: 32px;
+    justify-content: center;
+  }
+}
+
+/* Medium devices (tablets) */
+@media (max-width: 768px) {
+  .intro-content {
+    margin-top: 48px;
+    padding: 0 24px;
+  }
+
+  .intro-actions {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  .intro-button {
+    width: 80vw;
+    height: auto;
+    font-size: 15px;
+  }
+}
+
+/* Large devices (small laptops) */
+@media (max-width: 1024px) {
+  .intro-button {
+    width: 400px;
+    height: 400px;
+  }
+
+  .intro-subtext {
+    font-size: 17px;
+  }
+}

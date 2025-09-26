@@ -107,3 +107,94 @@ font-weight: 700;
 .fade-in {
   opacity: 1;
 }
+
+/* Extra small devices (phones) */
+@media (max-width: 480px) {
+  .sub-header {
+    font-size: 12px;
+    top: 4%;
+    left: 4%;
+  }
+
+  .introduce-content {
+    margin-top: 32px;
+    padding: 0 16px;
+  }
+
+  .intro-heading,
+  .intro-subtext {
+    font-size: 12px;
+  }
+
+  .intro-input {
+    left: 50%;
+    bottom: 40%;
+    transform: translateX(-50%);
+    width: 90vw;
+    height: 48px;
+    font-size: 32px;
+  }
+
+  .rombus {
+    top: 12%;
+    left: 10%;
+    width: 300px;
+    height: 300px;
+  }
+
+  .proceed-button {
+    bottom: 4%;
+    right: 4%;
+    font-size: 12px;
+    padding: 10px 16px;
+  }
+
+  .back-button {
+    bottom: 4%;
+    left: 4%;
+    font-size: 12px;
+  }
+}
+
+/* Medium devices (tablets) */
+@media (max-width: 768px) {
+  .intro-input {
+    left: 50%;
+    bottom: 45%;
+    transform: translateX(-50%);
+    width: 80vw;
+    height: 56px;
+    font-size: 48px;
+  }
+
+  .rombus {
+    top: 10%;
+    left: 15%;
+    width: 500px;
+    height: 500px;
+  }
+
+  .proceed-button {
+    bottom: 3%;
+    right: 3%;
+    font-size: 13px;
+  }
+
+  .back-button {
+    bottom: 3%;
+    left: 3%;
+  }
+}
+
+/* Large devices (small laptops) */
+@media (max-width: 1024px) {
+  .intro-input {
+    width: 360px;
+    font-size: 48px;
+  }
+
+  .rombus {
+    width: 600px;
+    height: 600px;
+  }
+}

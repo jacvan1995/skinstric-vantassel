@@ -29,3 +29,51 @@
     transform: rotate(360deg);
   }
 }
+
+/* Extra small devices (phones) */
+@media (max-width: 480px) {
+  .loading-screen {
+    padding: 0 16px;
+  }
+
+  .loading-content {
+    gap: 12px;
+  }
+
+  .rotating-image {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+/* Medium devices (tablets) */
+@media (max-width: 768px) {
+  .loading-content {
+    gap: 14px;
+  }
+
+  .rotating-image {
+    width: 64px;
+    height: 64px;
+  }
+}
+
+/* Large devices (small laptops) */
+@media (max-width: 1024px) {
+  .rotating-image {
+    width: 72px;
+    height: 72px;
+  }
+}
+
+/* Extra large screens (ultra-wide monitors) */
+@media (min-width: 1600px) {
+  .rotating-image {
+    width: 100px;
+    height: 100px;
+  }
+
+  .loading-content {
+    gap: 20px;
+  }
+}
