@@ -15,10 +15,16 @@ const Demographics = () => {
   const sexRef = useRef(Math.random() < 0.5 ? "Male" : "Female");
 
   const racePredictionRef = useRef(
-    raceList[racePercentagesRef.current.indexOf(Math.max(...racePercentagesRef.current))]
+    raceList[
+      racePercentagesRef.current.indexOf(
+        Math.max(...racePercentagesRef.current)
+      )
+    ]
   );
   const agePredictionRef = useRef(
-    ageList[agePercentagesRef.current.indexOf(Math.max(...agePercentagesRef.current))]
+    ageList[
+      agePercentagesRef.current.indexOf(Math.max(...agePercentagesRef.current))
+    ]
   );
 
   const activeList =
@@ -45,61 +51,53 @@ const Demographics = () => {
     ? selectedIndices.map((i) => activePercentages[i])
     : activePercentages;
 
-  const pieColors = [
-    "#4caf50",
-    "#f44336",
-    "#2196f3",
-    "#ffeb3b",
-    "#9c27b0",
-    "#00bcd4",
-    "#ff9800",
-  ];
-
   return (
     <main className="skinstric-wrapper">
-      <div className="header">
-        <h2 className="header-orbital">A.I. ANALYSIS</h2>
-        <h3 className="header-main">DEMOGRAPHICS</h3>
-        <h4 className="header-sub">PREDICTED RACE & AGE</h4>
-      </div>
-
-      <div className="info-container">
-        <div className="info-column">
-          {["race", "age", "sex"].map((type) => (
-            <div
-              key={type}
-              className={`info-box ${selectedInfoType === type ? "highlight" : ""}`}
-              onClick={() => setSelectedInfoType(type)}
-            >
-              <div className="info-top">
-                {type === "race"
-                  ? racePredictionRef.current
-                  : type === "age"
-                  ? agePredictionRef.current
-                  : sexRef.current}
-              </div>
-              <div className="info-bottom">{type.toUpperCase()}</div>
-            </div>
-          ))}
+      
+        <div className="header">
+          <h2 className="header-orbital">A.I. ANALYSIS</h2>
+          <h3 className="header-main">DEMOGRAPHICS</h3>
+          <h4 className="header-sub">PREDICTED RACE & AGE</h4>
         </div>
-
+<div className="demographics-layout">
+        <div className="info-container">
+          <div className="info-column">
+            {["race", "age", "sex"].map((type) => (
+              <div
+                key={type}
+                className={`info-box ${
+                  selectedInfoType === type ? "highlight" : ""
+                }`}
+                onClick={() => setSelectedInfoType(type)}
+              >
+                <div className="info-top">
+                  {type === "race"
+                    ? racePredictionRef.current
+                    : type === "age"
+                    ? agePredictionRef.current
+                    : sexRef.current}
+                </div>
+                <div className="info-bottom">{type.toUpperCase()}</div>
+              </div>
+            ))}
+          </div>
+        </div>
         <div className="info-graph">
           <div className="graph-text">
             {`${racePredictionRef.current}, ${agePredictionRef.current}, ${sexRef.current}`}
             <ul className="graph-legend">
               {filteredLabels.map((label, i) => (
                 <li key={i} className="legend-item">
-                  <span
-                    className="legend-color"
-                    style={{ backgroundColor: pieColors[i % pieColors.length] }}
-                  ></span>
                   <span className="legend-label">{label}</span>
                 </li>
               ))}
             </ul>
           </div>
           <div className="graph-chart">
-            <PieChart labels={filteredLabels} percentages={filteredPercentages} />
+            <PieChart
+              labels={filteredLabels}
+              percentages={filteredPercentages}
+            />
           </div>
         </div>
 
@@ -117,7 +115,9 @@ const Demographics = () => {
                 return (
                   <li
                     key={i}
-                    className={`list-item ${isSelected ? "selected highlight" : ""}`}
+                    className={`list-item ${
+                      isSelected ? "selected highlight" : ""
+                    }`}
                     onClick={() => {
                       setSelectedIndices((prev) =>
                         prev.includes(i)
