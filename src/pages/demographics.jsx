@@ -82,6 +82,7 @@ const Demographics = () => {
               ))}
             </div>
           </div>
+          
           <div className="info-graph">
             <div className="graph-text">
               {selectedInfoType === "race"
