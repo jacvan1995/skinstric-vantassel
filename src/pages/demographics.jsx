@@ -53,89 +53,86 @@ const Demographics = () => {
 
   return (
     <main className="skinstric-wrapper">
-      
+      <div className="demo-content">
         <div className="header">
           <h2 className="header-orbital">A.I. ANALYSIS</h2>
           <h3 className="header-main">DEMOGRAPHICS</h3>
           <h4 className="header-sub">PREDICTED RACE & AGE</h4>
         </div>
-<div className="demographics-layout">
-        <div className="info-container">
-          <div className="info-column">
-            {["race", "age", "sex"].map((type) => (
-              <div
-                key={type}
-                className={`info-box ${
-                  selectedInfoType === type ? "highlight" : ""
-                }`}
-                onClick={() => setSelectedInfoType(type)}
-              >
-                <div className="info-top">
-                  {type === "race"
-                    ? racePredictionRef.current
-                    : type === "age"
-                    ? agePredictionRef.current
-                    : sexRef.current}
+        <div className="demographics-layout">
+          <div className="info-container">
+            <div className="info-column">
+              {["race", "age", "sex"].map((type) => (
+                <div
+                  key={type}
+                  className={`info-box ${
+                    selectedInfoType === type ? "highlight" : ""
+                  }`}
+                  onClick={() => setSelectedInfoType(type)}
+                >
+                  <div className="info-top">
+                    {type === "race"
+                      ? racePredictionRef.current
+                      : type === "age"
+                      ? agePredictionRef.current
+                      : sexRef.current}
+                  </div>
+                  <div className="info-bottom">{type.toUpperCase()}</div>
                 </div>
-                <div className="info-bottom">{type.toUpperCase()}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-        <div className="info-graph">
-          <div className="graph-text">
-            {`${racePredictionRef.current}, ${agePredictionRef.current}, ${sexRef.current}`}
-            <ul className="graph-legend">
-              {filteredLabels.map((label, i) => (
-                <li key={i} className="legend-item">
-                  <span className="legend-label">{label}</span>
-                </li>
               ))}
-            </ul>
+            </div>
           </div>
-          <div className="graph-chart">
-            <PieChart
-              labels={filteredLabels}
-              percentages={filteredPercentages}
-            />
+          <div className="info-graph">
+            <div className="graph-text">
+              {selectedInfoType === "race"
+                ? racePredictionRef.current
+                : selectedInfoType === "age"
+                ? agePredictionRef.current
+                : sexRef.current}
+            </div>
+            <div className="graph-chart">
+              <PieChart
+                labels={filteredLabels}
+                percentages={filteredPercentages}
+              />
+            </div>
           </div>
-        </div>
 
-        <div className="info-chart">
-          <div className="info-chart-heading">
-            <div>{selectedInfoType.toUpperCase()}</div>
-            <div>A.I. CONFIDENCE</div>
-          </div>
-          <div className="info-chart-row">
-            <ul className="info-paired-list">
-              {activeList.map((label, i) => {
-                const value = activePercentages[i];
-                const isSelected = selectedIndices.includes(i);
+          <div className="info-chart">
+            <div className="info-chart-heading">
+              <div>{selectedInfoType.toUpperCase()}</div>
+              <div>A.I. CONFIDENCE</div>
+            </div>
+            <div className="info-chart-row">
+              <ul className="info-paired-list">
+                {activeList.map((label, i) => {
+                  const value = activePercentages[i];
+                  const isSelected = selectedIndices.includes(i);
 
-                return (
-                  <li
-                    key={i}
-                    className={`list-item ${
-                      isSelected ? "selected highlight" : ""
-                    }`}
-                    onClick={() => {
-                      setSelectedIndices((prev) =>
-                        prev.includes(i)
-                          ? prev.filter((idx) => idx !== i)
-                          : [...prev, i]
-                      );
-                    }}
-                  >
-                    <span className="label">{label}</span>
-                    <span className="value">{value}%</span>
-                  </li>
-                );
-              })}
-            </ul>
+                  return (
+                    <li
+                      key={i}
+                      className={`list-item ${
+                        isSelected ? "selected highlight" : ""
+                      }`}
+                      onClick={() => {
+                        setSelectedIndices((prev) =>
+                          prev.includes(i)
+                            ? prev.filter((idx) => idx !== i)
+                            : [...prev, i]
+                        );
+                      }}
+                    >
+                      <span className="label">{label}</span>
+                      <span className="value">{value}%</span>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
           </div>
         </div>
       </div>
-
       <footer>
         <button className="back-button">
           <img className="button-left" src={ButtonLeft} alt="Back" />
