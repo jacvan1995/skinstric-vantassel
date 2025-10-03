@@ -82,7 +82,7 @@ const Demographics = () => {
               ))}
             </div>
           </div>
-          
+
           <div className="info-graph">
             <div className="graph-text">
               {selectedInfoType === "race"
@@ -117,11 +117,7 @@ const Demographics = () => {
                         isSelected ? "selected highlight" : ""
                       }`}
                       onClick={() => {
-                        setSelectedIndices((prev) =>
-                          prev.includes(i)
-                            ? prev.filter((idx) => idx !== i)
-                            : [...prev, i]
-                        );
+                        setSelectedIndices([i]);
                       }}
                     >
                       <span className="label">{label}</span>
