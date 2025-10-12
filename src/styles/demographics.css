@@ -153,8 +153,7 @@
   display: flex;
   justify-content: flex-end;
   align-self: flex-end;
-  height: auto;
-  max-height: 480px;
+  transform: scale(1.5);
   transform: translate(-45%, -45%);
 }
 
